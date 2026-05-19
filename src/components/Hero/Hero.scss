@@ -1,0 +1,134 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  background: $white;
+  padding-top: 110px; overflow: hidden;
+
+  &__bg {
+    position: absolute; inset: 0; pointer-events: none;
+
+    &-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(#f0f0f0 1px, transparent 1px),
+        linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    &-glow {
+      position: absolute; width: 500px; height: 500px;
+      border-radius: 50%; filter: blur(120px);
+      &--1 { background: rgba(0,0,0,0.04); top: -100px; right: -80px; }
+      &--2 { background: rgba(0,0,0,0.03); bottom: -150px; left: -80px; }
+    }
+  }
+
+  &__inner {
+    @include container;
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    padding-top: 40px; padding-bottom: 80px;
+
+    @include responsive(lg) { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  &__badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border: $border-medium; border-radius: $radius-full;
+    font-size: 11px; font-weight: 700; color: $gray-600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 24px; background: $gray-50;
+    span { width: 6px; height: 6px; background: $black; border-radius: 50%; animation: pulse-dot 2s infinite; }
+  }
+
+  &__title {
+    font-size: clamp(36px, 5vw, 66px);
+    font-weight: 900; line-height: 1.05; letter-spacing: -2.5px;
+    color: $black; margin-bottom: 22px;
+    em { font-style: normal; color: $gray-500; }
+  }
+
+  &__subtitle {
+    font-size: 18px; color: $gray-500; line-height: 1.75;
+    max-width: 500px; margin-bottom: 36px;
+    @include responsive(md) { font-size: 16px; }
+  }
+
+  &__actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  &__btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: $radius-full;
+    font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none;
+    transition: all $transition-base;
+
+    &--primary {
+      background: $black; color: $white; border: 2px solid $black;
+      &:hover { background: $gray-800; border-color: $gray-800; transform: translateY(-2px); box-shadow: 0 10px 35px rgba(0,0,0,0.18); }
+    }
+
+    &--secondary {
+      background: transparent; color: $black; border: 2px solid $gray-300;
+      &:hover { border-color: $black; background: $gray-100; transform: translateY(-2px); }
+    }
+  }
+
+  &__stats {
+    display: flex; gap: 36px; margin-top: 52px;
+    padding-top: 36px; border-top: $border-subtle; flex-wrap: wrap;
+    @include responsive(md) { gap: 24px; }
+  }
+
+  &__stat {
+    &-value { font-size: 30px; font-weight: 900; color: $black; letter-spacing: -1px; }
+    &-label { font-size: 13px; color: $gray-500; margin-top: 3px; }
+  }
+
+  &__visual { position: relative; @include responsive(lg) { display: none; } }
+
+  &__card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  &__card {
+    background: $white; border: $border-subtle; border-radius: $radius-lg;
+    padding: 22px; transition: all $transition-base;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+
+    &:hover { border-color: $gray-300; box-shadow: 0 8px 30px rgba(0,0,0,0.09); transform: translateY(-3px); }
+
+    &-icon {
+      width: 38px; height: 38px; background: $gray-100; border-radius: 10px;
+      @include flex-center; margin-bottom: 14px; color: $black;
+    }
+    &-title { font-size: 13px; font-weight: 700; color: $black; margin-bottom: 5px; }
+    &-desc { font-size: 11px; color: $gray-500; line-height: 1.6; }
+    &-value { font-size: 26px; font-weight: 900; color: $black; letter-spacing: -1px; margin-top: 10px; }
+
+    &-bar {
+      height: 3px; background: $gray-200; border-radius: 2px; margin-top: 10px;
+      &-fill { height: 100%; background: $black; border-radius: 2px; }
+    }
+  }
+
+  &__scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: $gray-400; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; z-index: 2;
+    &-line { width: 1px; height: 36px; background: linear-gradient(to bottom, $gray-400, transparent); animation: scroll-line 2s infinite; }
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}

@@ -1,0 +1,56 @@
+// =====================
+// LIGHT THEME VARIABLES
+// =====================
+
+// Core whites & blacks
+$white:   #ffffff;
+$black:   #000000;
+$off-white: #fafafa;
+$near-white: #f5f5f5;
+
+// Gray scale
+$gray-50:  #fafafa;
+$gray-100: #f5f5f5;
+$gray-150: #efefef;
+$gray-200: #e8e8e8;
+$gray-300: #d1d1d1;
+$gray-400: #a3a3a3;
+$gray-500: #737373;
+$gray-600: #525252;
+$gray-700: #3f3f3f;
+$gray-800: #262626;
+$gray-900: #171717;
+
+// Dark shades (for dark sections)
+$dark-1: #0a0a0a;
+$dark-2: #111111;
+$dark-3: #1a1a1a;
+$dark-4: #222222;
+
+// Typography
+$font-primary: 'Inter', sans-serif;
+
+// Spacing
+$section-padding: 100px;
+$container-max: 1200px;
+
+// Borders (light)
+$border-subtle: 1px solid #ebebeb;
+$border-medium: 1px solid #d4d4d4;
+$border-strong: 1px solid #a3a3a3;
+
+// Borders (dark section)
+$border-dark-subtle: 1px solid rgba(255,255,255,0.08);
+$border-dark-medium: 1px solid rgba(255,255,255,0.14);
+
+// Border radii
+$radius-sm:   8px;
+$radius-md:   12px;
+$radius-lg:   16px;
+$radius-xl:   24px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 0.18s ease;
+$transition-base: 0.28s ease;
+$transition-slow: 0.45s ease;
