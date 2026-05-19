@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.clients-section {
+  padding: 52px 0;
+  background: $gray-50;
+
+  border-top: $border-subtle;
+  border-bottom: $border-subtle;
+
+  overflow: hidden;
+}
+
+.clients-label {
+  text-align: center;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: $gray-400;
+
+  margin-bottom: 36px;
+}
+
+.clients-slider-wrapper {
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.clients-slider-track {
+  display: flex;
+  gap: 56px;
+
+  width: max-content;
+
+  animation: clients-slide-logos 28s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.clients-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: $gray-400;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $gray-700;
+  }
+
+  svg {
+    opacity: 0.6;
+  }
+}
+
+@keyframes clients-slide-logos {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
