@@ -1,0 +1,751 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// Overlay
+.cm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(6, 13, 31, 0.72);
+  backdrop-filter: blur(6px);
+  @include flex-center;
+  padding: 20px;
+  animation: cm-overlay-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.cm-closing {
+    animation: cm-overlay-out 0.26s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+}
+
+// Dialog
+.cm-dialog {
+  display: flex;
+  width: 960px;
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(99, 179, 237, 0.1),
+    0 40px 100px rgba(6, 13, 31, 0.5);
+  animation: cm-dialog-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.cm-closing {
+    animation: cm-dialog-out 0.26s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+}
+
+// ── Left dark panel ──────────────────────────
+.cm-left {
+  width: 340px;
+  flex-shrink: 0;
+  background: $dark-2;
+  padding: 44px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 179, 237, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 179, 237, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @include responsive(md) { display: none; }
+}
+
+.cm-left-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+    color: $white;
+    letter-spacing: -0.3px;
+  }
+}
+
+.cm-left-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: $black;
+  border-radius: $radius-sm;
+  @include flex-center;
+  font-size: 11px;
+  font-weight: 800;
+  color: $white;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.cm-left-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(99, 179, 237, 0.28);
+  border-radius: $radius-full;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $blue-300;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+}
+
+.cm-left-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $white;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+
+  em {
+    font-style: normal;
+    color: $blue-400;
+  }
+}
+
+.cm-left-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-perk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 500;
+}
+
+.cm-perk-icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(99, 179, 237, 0.2);
+  border-radius: $radius-sm;
+  @include flex-center;
+  color: $blue-400;
+  flex-shrink: 0;
+}
+
+// Stats row
+.cm-left-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 32px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
+  border-bottom: 1px solid rgba(99, 179, 237, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.cm-left-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  strong {
+    font-size: 18px;
+    font-weight: 800;
+    color: $white;
+    letter-spacing: -0.5px;
+  }
+
+  span {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+}
+
+.cm-left-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(99, 179, 237, 0.15);
+}
+
+.cm-left-footer {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.28);
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+// ── Right white panel ─────────────────────────
+.cm-right {
+  flex: 1;
+  background: $white;
+  padding: 40px 36px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.cm-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: $radius-sm;
+  border: $border-subtle;
+  background: $gray-50;
+  color: $gray-500;
+  cursor: pointer;
+  @include flex-center;
+  transition: all $transition-fast;
+  z-index: 2;
+
+  &:hover {
+    background: $gray-150;
+    color: $gray-999;
+    transform: rotate(90deg);
+  }
+}
+
+.cm-right-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.6px;
+  margin-bottom: 4px;
+  padding-right: 44px;
+}
+
+.cm-subtitle {
+  font-size: 13px;
+  color: $gray-500;
+  margin-bottom: 24px;
+}
+
+// Form
+.cm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  @include responsive(sm) { grid-template-columns: 1fr; }
+}
+
+.cm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cm-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $gray-700;
+  span { color: $blue-600; }
+}
+
+.cm-input,
+.cm-select,
+.cm-textarea {
+  width: 100%;
+  padding: 10px 13px;
+  background: $gray-50;
+  border: $border-medium;
+  border-radius: $radius-sm;
+  font-size: 13px;
+  color: $gray-900;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  transition: all $transition-fast;
+
+  &::placeholder { color: $gray-400; }
+
+  &:focus {
+    background: $white;
+    border-color: $black;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+}
+
+.cm-textarea {
+  resize: vertical;
+  min-height: 82px;
+  line-height: 1.6;
+}
+
+.cm-select { cursor: pointer; }
+
+.cm-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 24px;
+  background: $black;
+  color: $white;
+  border: none;
+  border-radius: $radius-full;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-base;
+  margin-top: 6px;
+
+  &:hover {
+    background: $blue-700;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Success
+.cm-success {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 56px 16px;
+}
+
+.cm-success-icon {
+  width: 64px;
+  height: 64px;
+  background: $blue-50;
+  border: $border-strong;
+  border-radius: 50%;
+  @include flex-center;
+  margin-bottom: 20px;
+  color: $black;
+}
+
+.cm-success-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.cm-success-text {
+  font-size: 14px;
+  color: $gray-500;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+// ── Animations ────────────────────────────────
+@keyframes cm-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cm-overlay-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes cm-dialog-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes cm-dialog-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(20px) scale(0.96); }
+}
+
+// ── Left dark panel ──────────────────────────
+.cm-left {
+  width: 300px;
+  flex-shrink: 0;
+  background: $dark-2;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+
+  // subtle grid bg
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 179, 237, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 179, 237, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  // glow blob
+  &::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @include responsive(md) {
+    display: none;
+  }
+}
+
+.cm-left-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+    color: $white;
+    letter-spacing: -0.3px;
+  }
+}
+
+.cm-left-logo-icon {
+  width: 34px;
+  height: 34px;
+  background: $black;
+  border-radius: $radius-sm;
+  @include flex-center;
+  font-size: 11px;
+  font-weight: 800;
+  color: $white;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.cm-left-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(99, 179, 237, 0.25);
+  border-radius: $radius-full;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $blue-300;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+}
+
+.cm-left-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $white;
+  letter-spacing: -0.8px;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+
+  em {
+    font-style: normal;
+    color: $blue-400;
+  }
+}
+
+.cm-left-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-perk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+.cm-perk-icon {
+  width: 28px;
+  height: 28px;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(99, 179, 237, 0.2);
+  border-radius: $radius-sm;
+  @include flex-center;
+  color: $blue-400;
+  flex-shrink: 0;
+}
+
+.cm-left-footer {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  padding-top: 24px;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
+  margin-top: 24px;
+}
+
+// ── Right white panel ─────────────────────────
+.cm-right {
+  flex: 1;
+  background: $white;
+  padding: 36px 32px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.cm-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  border: $border-subtle;
+  background: $gray-50;
+  color: $gray-500;
+  cursor: pointer;
+  @include flex-center;
+  transition: all $transition-fast;
+  z-index: 2;
+
+  &:hover {
+    background: $gray-150;
+    color: $gray-999;
+  }
+}
+
+.cm-right-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  padding-right: 40px;
+}
+
+.cm-subtitle {
+  font-size: 13px;
+  color: $gray-500;
+  margin-bottom: 22px;
+}
+
+// Form
+.cm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  @include responsive(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cm-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $gray-700;
+  span { color: $blue-600; }
+}
+
+.cm-input,
+.cm-select,
+.cm-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  background: $gray-50;
+  border: $border-medium;
+  border-radius: $radius-sm;
+  font-size: 13px;
+  color: $gray-900;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  transition: all $transition-fast;
+
+  &::placeholder { color: $gray-400; }
+
+  &:focus {
+    background: $white;
+    border-color: $black;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+}
+
+.cm-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+.cm-select { cursor: pointer; }
+
+.cm-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 24px;
+  background: $black;
+  color: $white;
+  border: none;
+  border-radius: $radius-full;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-base;
+  margin-top: 6px;
+
+  &:hover {
+    background: $blue-700;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Success
+.cm-success {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 48px 16px;
+  gap: 0;
+}
+
+.cm-success-icon {
+  width: 60px;
+  height: 60px;
+  background: $blue-50;
+  border: $border-strong;
+  border-radius: 50%;
+  @include flex-center;
+  margin-bottom: 20px;
+  color: $black;
+}
+
+.cm-success-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.cm-success-text {
+  font-size: 14px;
+  color: $gray-500;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+// Animations
+@keyframes cm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cm-slide-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

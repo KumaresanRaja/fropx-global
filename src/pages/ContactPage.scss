@@ -1,0 +1,573 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.cp-main {
+  padding-top: 80px;
+}
+
+.cp-container {
+  @include container;
+}
+
+.cp-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: $gray-999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  &::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: $black;
+  }
+}
+
+.cp-section-title {
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: $black;
+  margin-bottom: 40px;
+
+  em {
+    font-style: normal;
+    color: $gray-999;
+  }
+}
+
+// ── Hero ──────────────────────────────────────────
+.cp-hero {
+  background: $white;
+  padding: 80px 0 70px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: $border-subtle;
+}
+
+.cp-hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#f0f0f0 1px, transparent 1px),
+    linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.cp-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.cp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-500;
+  background: none;
+  border: $border-medium;
+  border-radius: $radius-full;
+  padding: 7px 16px;
+  cursor: pointer;
+  margin-bottom: 32px;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $black;
+    border-color: $black;
+    background: $gray-100;
+  }
+}
+
+.cp-hero-title {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -2.5px;
+  line-height: 1.05;
+  color: $black;
+  margin-bottom: 18px;
+  max-width: 700px;
+
+  em {
+    font-style: normal;
+    color: $gray-500;
+  }
+}
+
+.cp-hero-subtitle {
+  font-size: 17px;
+  color: $gray-500;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.cp-hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $gray-700;
+    background: $gray-100;
+    border: $border-subtle;
+    border-radius: $radius-full;
+    padding: 7px 16px;
+  }
+}
+
+// ── Process ───────────────────────────────────────
+.cp-process {
+  padding: 80px 0;
+  background: $white;
+  border-bottom: $border-subtle;
+}
+
+.cp-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+
+  @include responsive(lg) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @include responsive(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cp-process-card {
+  position: relative;
+  padding: 32px 28px;
+  border: $border-subtle;
+  border-right: none;
+  background: $white;
+
+  &:last-child {
+    border-right: $border-subtle;
+  }
+
+  @include responsive(lg) {
+    border-right: $border-subtle;
+    border-radius: $radius-md;
+  }
+}
+
+.cp-process-step {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: $gray-300;
+  margin-bottom: 16px;
+}
+
+.cp-process-icon {
+  width: 44px;
+  height: 44px;
+  background: $gray-100;
+  border: $border-subtle;
+  border-radius: $radius-md;
+  @include flex-center;
+  color: $black;
+  margin-bottom: 16px;
+}
+
+.cp-process-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: $black;
+  margin-bottom: 8px;
+}
+
+.cp-process-desc {
+  font-size: 13px;
+  color: $gray-500;
+  line-height: 1.6;
+}
+
+.cp-process-arrow {
+  position: absolute;
+  top: 50%;
+  right: -14px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: $gray-300;
+  z-index: 2;
+
+  @include responsive(lg) {
+    display: none;
+  }
+}
+
+// ── Contact Form ──────────────────────────────────
+.cp-contact {
+  padding: 80px 0;
+  background: $near-white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cp-contact-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#ebebeb 1px, transparent 1px),
+    linear-gradient(90deg, #ebebeb 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.cp-contact-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+
+  @include responsive(lg) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.cp-info-title {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  color: $black;
+  margin-bottom: 14px;
+
+  em {
+    font-style: normal;
+    color: $gray-500;
+  }
+}
+
+.cp-info-text {
+  font-size: 15px;
+  color: $gray-500;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.cp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cp-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cp-detail-icon {
+  width: 44px;
+  height: 44px;
+  background: $white;
+  border: $border-subtle;
+  border-radius: 10px;
+  @include flex-center;
+  color: $black;
+  flex-shrink: 0;
+}
+
+.cp-detail-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $gray-400;
+  margin-bottom: 3px;
+}
+
+.cp-detail-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: $gray-700;
+}
+
+.cp-form-wrapper {
+  background: $white;
+  border: $border-subtle;
+  border-radius: $radius-xl;
+  padding: 40px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+
+  @include responsive(sm) {
+    padding: 24px;
+  }
+}
+
+.cp-form-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: $black;
+  margin-bottom: 4px;
+}
+
+.cp-form-subtitle {
+  font-size: 14px;
+  color: $gray-400;
+  margin-bottom: 28px;
+}
+
+.cp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cp-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+
+  @include responsive(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cp-input-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-700;
+
+  span {
+    color: $gray-999;
+  }
+}
+
+.cp-input,
+.cp-textarea,
+.cp-select {
+  width: 100%;
+  padding: 11px 14px;
+  background: $white;
+  border: $border-medium;
+  border-radius: $radius-sm;
+  font-size: 14px;
+  color: $black;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-base;
+  outline: none;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    border-color: $black;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.cp-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.cp-select {
+  cursor: pointer;
+}
+
+.cp-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 32px;
+  background: $black;
+  color: $white;
+  border: none;
+  border-radius: $radius-full;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all $transition-base;
+  font-family: "Poppins", sans-serif;
+
+  &:hover {
+    background: $gray-800;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.cp-success {
+  text-align: center;
+  padding: 40px 20px;
+  animation: cp-fade-in 0.35s ease;
+}
+
+.cp-success-icon {
+  width: 56px;
+  height: 56px;
+  background: $black;
+  border-radius: 50%;
+  @include flex-center;
+  margin: 0 auto 18px;
+  color: $white;
+}
+
+.cp-success-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $black;
+  margin-bottom: 8px;
+}
+
+.cp-success-text {
+  font-size: 15px;
+  color: $gray-500;
+  margin-bottom: 24px;
+}
+
+.cp-success-back {
+  padding: 10px 28px;
+  background: none;
+  border: $border-medium;
+  border-radius: $radius-full;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $gray-100;
+    border-color: $black;
+  }
+}
+
+
+// ── FAQ ───────────────────────────────────────────
+.cp-faq {
+  padding: 80px 0;
+  background: $white;
+}
+
+.cp-faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+
+  @include responsive(lg) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.cp-faq-sub {
+  font-size: 14px;
+  color: $gray-500;
+  line-height: 1.6;
+
+  a {
+    color: $black;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
+
+.cp-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: $border-subtle;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.cp-faq-item {
+  border-bottom: $border-subtle;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.open .cp-faq-q {
+    color: $black;
+    background: $gray-50;
+  }
+}
+
+.cp-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: $white;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: $gray-700;
+  text-align: left;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $gray-50;
+    color: $black;
+  }
+}
+
+.cp-faq-a {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  color: $gray-500;
+  line-height: 1.75;
+  background: $gray-50;
+  animation: cp-fade-in 0.2s ease;
+}
+
+@keyframes cp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,4 +1,5 @@
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   RiTwitterXFill,
@@ -62,6 +63,7 @@ const FOOTER_SOCIALS = [
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -102,11 +104,7 @@ export default function Footer() {
 
           <button
             className="footer-cta-button"
-            onClick={() =>
-              document
-                .querySelector('#contact')
-                ?.scrollIntoView({ behavior: 'smooth' })
-            }
+            onClick={() => navigate('/contact-us')}
           >
             Start Your Project
             <ArrowUpRight size={16} />
@@ -136,7 +134,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-logo-text">
-              NEXAVATE <span>Technologies</span>
+              FROPX Global <span>Technologies</span>
             </div>
 
           </a>
@@ -205,7 +203,7 @@ export default function Footer() {
         <div className="footer-bottom-container">
 
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} NEXAVATE Technologies.
+            &copy; {new Date().getFullYear()} FROPX Global Technologies.
             All rights reserved.
           </div>
 

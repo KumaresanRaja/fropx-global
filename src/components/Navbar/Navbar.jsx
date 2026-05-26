@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ChevronDown, ArrowUpRight, Menu, X, Zap, Globe, Shield, HeartHandshake } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ChevronDown, ArrowUpRight, Zap, Globe, Shield, HeartHandshake } from 'lucide-react';
 import './Navbar.scss';
 
 const NAV_LINKS = [
-  {
-    label: 'About',
-    href: '#about',
-  },
+  { label: 'About', href: '#about' },
   {
     label: 'Services',
     href: '#services',
@@ -19,12 +17,14 @@ const NAV_LINKS = [
   },
   { label: 'Projects', href: '#projects' },
   { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact-us', isPage: true },
 ];
 
-export default function Navbar() {
+export default function Navbar({ isContactPage = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,8 +32,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (href, isPage) => {
     setMobileOpen(false);
+    if (isPage) {
+      navigate(href);
+      return;
+    }
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -41,17 +49,17 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       {/* Top Bar */}
-      <div className="navbar__topbar">
-        <div className="navbar__topbar-inner">
-          <div className="navbar__topbar-left">
-            <a href="mailto:contact@nexavate.com">
-              <Globe size={12} /> contact@nexavate.com
+      <div className="navbar-topbar">
+        <div className="navbar-topbar-inner">
+          <div className="navbar-topbar-left">
+            <a href="mailto:contact@FROPXGlobal.com">
+              <Globe size={12} /> contact@FROPXGlobal.com
             </a>
             <a href="tel:+15551234567">
               <Shield size={12} /> +1 (555) 123-4567
             </a>
           </div>
-          <div className="navbar__topbar-right">
+          <div className="navbar-topbar-right">
             <span><Zap size={12} /> Global Digital Transformation Partner</span>
             <span><Shield size={12} /> 24/7 Managed Support</span>
           </div>
@@ -59,29 +67,29 @@ export default function Navbar() {
       </div>
 
       {/* Main Nav */}
-      <div className="navbar__main">
-        <a className="navbar__logo" href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); }}>
-          <div className="navbar__logo-icon">NX</div>
-          <div className="navbar__logo-text">NEXAVATE <span>Technologies</span></div>
+      <div className="navbar-main">
+        <a className="navbar-logo" href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+          <div className="navbar-logo-icon">NX</div>
+          <div className="navbar-logo-text">FROPX Global <span>Technologies</span></div>
         </a>
 
-        <ul className="navbar__links">
+        <ul className="navbar-links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href} onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}>
+              <a href={link.href} onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }}>
                 {link.label}
                 {link.dropdown && <ChevronDown size={14} />}
               </a>
               {link.dropdown && (
-                <div className="navbar__dropdown">
+                <div className="navbar-dropdown">
                   {link.dropdown.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
-                      className="navbar__dropdown-item"
-                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
+                      className="navbar-dropdown-item"
+                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href, false); }}
                     >
-                      <div className="navbar__dropdown-icon">{item.icon}</div>
+                      <div className="navbar-dropdown-icon">{item.icon}</div>
                       {item.label}
                     </a>
                   ))}
@@ -91,16 +99,16 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="navbar__actions">
+        <div className="navbar-actions">
           <a
-            className="navbar__cta"
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+            className="navbar-cta"
+            href="/contact-us"
+            onClick={(e) => { e.preventDefault(); navigate('/contact-us'); }}
           >
             Free Consultation <ArrowUpRight size={15} />
           </a>
           <button
-            className={`navbar__hamburger${mobileOpen ? ' open' : ''}`}
+            className={`navbar-hamburger${mobileOpen ? ' open' : ''}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -110,20 +118,20 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`navbar__mobile${mobileOpen ? ' open' : ''}`}>
+      <div className={`navbar-mobile${mobileOpen ? ' open' : ''}`}>
         {NAV_LINKS.map((link) => (
           <a
             key={link.label}
             href={link.href}
-            onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+            onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }}
           >
             {link.label}
           </a>
         ))}
         <a
-          className="navbar__mobile-cta"
-          href="#contact"
-          onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+          className="navbar-mobile-cta"
+          href="/contact-us"
+          onClick={(e) => { e.preventDefault(); navigate('/contact-us'); }}
         >
           Free Consultation
         </a>

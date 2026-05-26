@@ -3,7 +3,7 @@
 
 .clients-section {
   padding: 52px 0;
-  background: $gray-50;
+  background: $white;
 
   border-top: $border-subtle;
   border-bottom: $border-subtle;
@@ -19,7 +19,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
 
-  color: $gray-400;
+  color: $gray-999;
 
   margin-bottom: 36px;
 }
@@ -58,11 +58,11 @@
   transition: color $transition-fast;
 
   &:hover {
-    color: $gray-700;
+    color: $black;
   }
 
   svg {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 }
 

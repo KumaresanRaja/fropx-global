@@ -1,0 +1,270 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.pp-main {
+  background: $white;
+  min-height: 100vh;
+}
+
+.pp-container {
+  @include container;
+}
+
+// Hero
+.pp-hero {
+  position: relative;
+  padding: 160px 0 80px;
+  background: $gray-50;
+  overflow: hidden;
+  @include responsive(md) {
+    padding: 120px 0 60px;
+  }
+}
+
+.pp-hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.pp-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.pp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 28px;
+  transition: color $transition-fast;
+  &:hover { color: $black; }
+}
+
+.pp-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: $gray-999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  &::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: $black;
+  }
+}
+
+.pp-hero-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: $gray-999;
+  margin-bottom: 16px;
+  em {
+    font-style: normal;
+    color: $black;
+  }
+}
+
+.pp-hero-subtitle {
+  font-size: 16px;
+  color: $gray-500;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+// Content
+.pp-content {
+  padding: 64px 0 100px;
+}
+
+// Filters
+.pp-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.pp-filter-btn {
+  padding: 8px 18px;
+  border-radius: $radius-full;
+  border: $border-medium;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: $gray-500;
+  cursor: pointer;
+  transition: all $transition-fast;
+  &:hover {
+    border-color: $black;
+    color: $black;
+  }
+  &.active {
+    background: $black;
+    border-color: $black;
+    color: $white;
+  }
+}
+
+// Grid
+.pp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include responsive(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include responsive(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pp-card {
+  background: $white;
+  border: $border-subtle;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  transition: all $transition-base;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    border-color: $gray-300;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.pp-card-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: $blue-50;
+  overflow: hidden;
+  position: relative;
+}
+
+.pp-card-image-inner {
+  position: absolute;
+  inset: 0;
+  @include flex-center;
+  flex-direction: column;
+  gap: 10px;
+  color: $gray-999;
+  span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+
+.pp-card-body {
+  padding: 22px 24px;
+  flex: 1;
+}
+
+.pp-card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.pp-card-tag {
+  padding: 4px 10px;
+  background: $blue-50;
+  border: $border-subtle;
+  border-radius: $radius-full;
+  font-size: 10px;
+  font-weight: 700;
+  color: $blue-700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.pp-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.pp-card-desc {
+  font-size: 13px;
+  color: $gray-500;
+  line-height: 1.7;
+}
+
+.pp-card-footer {
+  @include flex-between;
+  padding: 14px 24px;
+  border-top: $border-subtle;
+  font-size: 12px;
+  color: $gray-500;
+}
+
+.pp-card-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $gray-600;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  transition: color $transition-fast;
+  &:hover { color: $gray-999; }
+}
+
+// Pagination
+.pp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 56px;
+}
+
+.pp-page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: $radius-md;
+  border: $border-medium;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-500;
+  cursor: pointer;
+  transition: all $transition-fast;
+  &:hover:not(:disabled) {
+    border-color: $black;
+    color: $black;
+  }
+  &.active {
+    background: $black;
+    border-color: $black;
+    color: $white;
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { RiBrainLine, RiDatabase2Line, RiShoppingCartLine, RiBarChartLine, RiRobotLine, RiCloudLine } from 'react-icons/ri';
 import './Projects.scss';
@@ -66,52 +67,55 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
   return (
-    <section className="projects" id="projects">
-      <div className="projects__inner">
+    <section className="projects-section" id="projects">
+      <div className="projects-inner">
         {/* Header */}
-        <div className="projects__header">
+        <div className="projects-header">
           <div>
-            <div className="projects__label">Case Studies</div>
-            <h2 className="projects__title">
+            <div className="projects-label">Case Studies</div>
+            <h2 className="projects-title">
               Our <em>Work</em>
             </h2>
           </div>
-          <button className="projects__view-all">
+          <button className="projects-view-all" onClick={() => navigate('/projects')}>
             View All Projects <ArrowUpRight size={15} />
           </button>
         </div>
 
         {/* Grid */}
-        <div className="projects__grid">
+        <div className="projects-grid">
           {PROJECTS.map((p) => (
             <div
               key={p.id}
-              className={`projects__card projects__card--${p.size}`}
+              className={`projects-card projects-card-${p.size}`}
+              onClick={() => navigate('/projects')}
+              style={{ cursor: 'pointer' }}
             >
               {/* Image Area */}
-              <div className="projects__card-image">
-                <div className="projects__card-image-inner">
+              <div className="projects-card-image">
+                <div className="projects-card-image-inner">
                   {p.icon}
                   <span>{p.client}</span>
                 </div>
               </div>
 
               {/* Body */}
-              <div className="projects__card-body">
-                <div className="projects__card-tags">
+              <div className="projects-card-body">
+                <div className="projects-card-tags">
                   {p.tags.map((t) => (
-                    <span className="projects__card-tag" key={t}>{t}</span>
+                    <span className="projects-card-tag" key={t}>{t}</span>
                   ))}
                 </div>
-                <div className="projects__card-title">{p.title}</div>
-                <div className="projects__card-desc">{p.desc}</div>
+                <div className="projects-card-title">{p.title}</div>
+                <div className="projects-card-desc">{p.desc}</div>
               </div>
 
               {/* Footer */}
-              <div className="projects__card-footer">
+              <div className="projects-card-footer">
                 <span>{p.year}</span>
-                <a href="#contact" className="projects__card-link" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                <a href="#contact" className="projects-card-link" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   View Case Study <ExternalLink size={12} />
                 </a>
               </div>

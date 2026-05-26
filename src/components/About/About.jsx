@@ -51,7 +51,7 @@ export default function About() {
           </h2>
 
           <p className="about-text">
-            At NEXAVATE Technologies, we believe a company is more than just an
+            At FROPX Global Technologies, we believe a company is more than just an
             organization — it's a living body. While the company forms the body,
             our employees and customers are the soul that drives every decision
             we make.

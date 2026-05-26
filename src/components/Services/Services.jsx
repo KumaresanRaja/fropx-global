@@ -105,25 +105,25 @@ export default function Services() {
   const panel = SERVICES.find((s) => s.id === active);
 
   return (
-    <section className="services" id="services">
-      <div className="services__inner">
+    <section className="services-section" id="services">
+      <div className="services-inner">
         {/* Header */}
-        <div className="services__header">
-          <div className="services__label">What We Do</div>
-          <h2 className="services__title">
+        <div className="services-header">
+          <div className="services-label">What We Do</div>
+          <h2 className="services-title">
             Our <em>Services</em>
           </h2>
-          <p className="services__subtitle">
+          <p className="services-subtitle">
             From AI strategy to full-scale implementation, we deliver end-to-end technology solutions that drive measurable business results.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="services__tabs">
+        <div className="services-tabs">
           {SERVICES.map((s) => (
             <button
               key={s.id}
-              className={`services__tab${active === s.id ? ' active' : ''}`}
+              className={`services-tab${active === s.id ? ' active' : ''}`}
               onClick={() => setActive(s.id)}
             >
               {s.icon} {s.label}
@@ -133,12 +133,12 @@ export default function Services() {
 
         {/* Panel */}
         {panel && (
-          <div className="services__panel" key={panel.id}>
+          <div className="services-panel" key={panel.id}>
             <div>
-              <div className="services__panel-label">Our Expertise</div>
-              <h3 className="services__panel-title">{panel.title}</h3>
-              <p className="services__panel-desc">{panel.desc}</p>
-              <ul className="services__panel-list">
+              <div className="services-panel-label">Our Expertise</div>
+              <h3 className="services-panel-title">{panel.title}</h3>
+              <p className="services-panel-desc">{panel.desc}</p>
+              <ul className="services-panel-list">
                 {panel.bullets.map((b) => (
                   <li key={b}>
                     <CheckCircle size={15} />
@@ -147,16 +147,16 @@ export default function Services() {
                 ))}
               </ul>
               <button
-                className="services__panel-cta"
+                className="services-panel-cta"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get Started <ArrowUpRight size={15} />
               </button>
             </div>
 
-            <div className="services__panel-visual">
-              <div className="services__panel-icon-wrap">
-                <div className="services__panel-icon-main">
+            <div className="services-panel-visual">
+              <div className="services-panel-icon-wrap">
+                <div className="services-panel-icon-main">
                   {SERVICES.find((s) => s.id === active)?.icon &&
                     (() => {
                       const S = SERVICES.find((s) => s.id === active);
@@ -164,7 +164,7 @@ export default function Services() {
                     })()
                   }
                 </div>
-                <div className="services__panel-chips">
+                <div className="services-panel-chips">
                   {panel.chips.map((chip) => (
                     <span key={chip}>{chip}</span>
                   ))}
@@ -175,17 +175,17 @@ export default function Services() {
         )}
 
         {/* Cards Grid */}
-        <div className="services__grid">
+        <div className="services-grid">
           {CARDS.map((card) => (
             <div
-              className="services__card"
+              className="services-card"
               key={card.id}
               onClick={() => setActive(card.id)}
             >
-              <div className="services__card-icon">{card.icon}</div>
-              <div className="services__card-title">{card.title}</div>
-              <div className="services__card-desc">{card.bullets[0]}</div>
-              <div className="services__card-arrow">
+              <div className="services-card-icon">{card.icon}</div>
+              <div className="services-card-title">{card.title}</div>
+              <div className="services-card-desc">{card.bullets[0]}</div>
+              <div className="services-card-arrow">
                 <ChevronRight size={18} />
               </div>
             </div>

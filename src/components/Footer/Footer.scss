@@ -1,9 +1,8 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .footer-section {
   background: $dark-1;
-
   border-top: $border-dark-subtle;
 }
 
@@ -30,7 +29,8 @@
 }
 
 /* Brand */
-.footer-brand {}
+.footer-brand {
+}
 
 .footer-logo {
   display: flex;
@@ -47,20 +47,20 @@
   width: 36px;
   height: 36px;
 
-  background: $white;
+  background: $blue-500;
   border-radius: 8px;
 
   @include flex-center;
 
-  color: $black;
+  color: $white;
 
-  font-weight: 900;
+  font-weight: 600;
   font-size: 13px;
 }
 
 .footer-logo-text {
   font-size: 17px;
-  font-weight: 800;
+  font-weight: 700;
 
   color: $white;
 
@@ -90,38 +90,27 @@
 .footer-social-link {
   width: 34px;
   height: 34px;
-
-  background: rgba(255, 255, 255, 0.06);
-
+  background: rgba(99, 179, 237, 0.08);
   border: $border-dark-subtle;
   border-radius: 8px;
-
   @include flex-center;
-
-  color: $gray-500;
-
+  color: $gray-400;
   text-decoration: none;
-
   transition: all $transition-base;
 
   &:hover {
-    background: $white;
-    color: $black;
-    border-color: $white;
+    background: $blue-600;
+    color: $white;
+    border-color: $blue-600;
   }
 }
 
-/* Columns */
-.footer-links-column {}
-
 .footer-column-title {
   margin-bottom: 18px;
-
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-
   color: $white;
 }
 
@@ -129,18 +118,14 @@
   display: flex;
   flex-direction: column;
   gap: 11px;
-
   list-style: none;
 
   li {
     a {
       font-size: 14px;
       text-decoration: none;
-
       color: $gray-600;
-
       transition: color $transition-fast;
-
       &:hover {
         color: $white;
       }
@@ -197,23 +182,23 @@
   width: 34px;
   height: 34px;
 
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(99, 179, 237, 0.08);
 
   border: $border-dark-subtle;
   border-radius: 8px;
 
   @include flex-center;
 
-  color: $gray-500;
+  color: $gray-400;
 
   cursor: pointer;
 
   transition: all $transition-base;
 
   &:hover {
-    background: $white;
-    color: $black;
-    border-color: $white;
+    background: $blue-600;
+    color: $white;
+    border-color: $blue-600;
   }
 }
 
@@ -230,8 +215,10 @@
   padding-bottom: 72px;
 
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
   gap: 40px;
 
   @include responsive(md) {
@@ -253,11 +240,11 @@
 
 .footer-cta-title {
   font-size: clamp(36px, 5vw, 72px);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 0.95;
   letter-spacing: -3px;
   color: #fff;
-
+  text-align: center;
   max-width: 760px;
 
   span {
@@ -272,8 +259,8 @@
 
   padding: 16px 28px;
 
-  background: $white;
-  color: $black;
+  background: $blue-500;
+  color: $white;
 
   border: none;
   border-radius: 999px;
@@ -288,7 +275,8 @@
   flex-shrink: 0;
 
   &:hover {
+    background: $blue-600;
     transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 40px rgba(59, 130, 246, 0.4);
   }
 }

@@ -90,7 +90,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  contact@nexavate.com
+                  contact@FROPXGlobal.com
                 </div>
               </div>
             </div>

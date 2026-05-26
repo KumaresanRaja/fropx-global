@@ -20,19 +20,19 @@ const CARDS = [
 
 export default function Metrics() {
   return (
-    <section className="metrics" id="metrics">
-      <div className="metrics__inner">
-        <div className="metrics__top">
+    <section className="metrics-section" id="metrics">
+      <div className="metrics-inner">
+        <div className="metrics-top">
           {/* Left */}
-          <div className="metrics__left">
-            <div className="metrics__label">Why Choose Us</div>
-            <h2 className="metrics__title">
-              Why High-Growth Companies <em>Trust NEXAVATE</em>
+          <div className="metrics-left">
+            <div className="metrics-label">Why Choose Us</div>
+            <h2 className="metrics-title">
+              Why High-Growth Companies <em>Trust FROPX Global</em>
             </h2>
-            <div className="metrics__bullets">
+            <div className="metrics-bullets">
               {BULLETS.map((b) => (
-                <div className="metrics__bullet" key={b}>
-                  <div className="metrics__bullet-icon">
+                <div className="metrics-bullet" key={b}>
+                  <div className="metrics-bullet-icon">
                     <CheckCircle size={14} />
                   </div>
                   {b}
@@ -42,31 +42,31 @@ export default function Metrics() {
           </div>
 
           {/* Right */}
-          <div className="metrics__right">
+          <div className="metrics-right">
             {CARDS.map((card) => (
-              <div className="metrics__card" key={card.label}>
-                <div className="metrics__card-value">{card.value}</div>
-                <div className="metrics__card-label">{card.label}</div>
+              <div className="metrics-card" key={card.label}>
+                <div className="metrics-card-value">{card.value}</div>
+                <div className="metrics-card-label">{card.label}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* CTA Bar */}
-        <div className="metrics__cta-bar">
-          <div className="metrics__cta-text">
+        <div className="metrics-cta-bar">
+          <div className="metrics-cta-text">
             Let&apos;s build something that delivers results &mdash; not just software
           </div>
-          <div className="metrics__cta-actions">
+          <div className="metrics-cta-actions">
             <a
-              className="metrics__btn metrics__btn--primary"
+              className="metrics-btn metrics-btn-primary"
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               <TrendingUp size={15} /> View Case Studies
             </a>
             <a
-              className="metrics__btn metrics__btn--outline"
+              className="metrics-btn metrics-btn-outline"
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
             >

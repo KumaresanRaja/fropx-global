@@ -50,69 +50,89 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero" id="hero">
+    <section className="hero-section" id="hero">
       {/* Background */}
-      <div className="hero__bg">
-        <div className="hero__bg-grid" />
-        <div className="hero__bg-glow hero__bg-glow--1" />
-        <div className="hero__bg-glow hero__bg-glow--2" />
+      <div className="hero-bg">
+        <div className="hero-bg-grid" />
+        <div className="hero-bg-glow hero-bg-glow-1" />
+        <div className="hero-bg-glow hero-bg-glow-2" />
       </div>
 
-      <div className="hero__inner">
+      <div className="hero-inner">
         {/* Content */}
-        <div className="hero__content">
-          <div className="hero__badge">
+        <div className="hero-content">
+          <div className="hero-badge">
             <span />
             Fast-Forward Business Growth
           </div>
 
-          <h1 className="hero__title">
+          <h1 className="hero-title">
             Transforming Businesses Through <em>AI, Automation</em> &amp; Advanced Analytics
           </h1>
 
-          <p className="hero__subtitle">
+          <p className="hero-subtitle">
             Specialized in building secure, AI-first solutions that automate operations, unlock insights, and accelerate business growth across every industry.
           </p>
 
-          <div className="hero__actions">
+          <div className="hero-actions">
             <a
-              className="hero__btn hero__btn--primary"
+              className="hero-btn hero-btn-primary"
               href="#contact"
-              onClick={(e) => { e.preventDefault(); handleScroll('#contact'); }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleScroll('#contact');
+              }}
             >
               Get a Free Quote <ArrowUpRight size={16} />
             </a>
+
             <a
-              className="hero__btn hero__btn--secondary"
+              className="hero-btn hero-btn-secondary"
               href="#projects"
-              onClick={(e) => { e.preventDefault(); handleScroll('#projects'); }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleScroll('#projects');
+              }}
             >
               <Play size={14} /> See Our Work
             </a>
           </div>
 
-          <div className="hero__stats">
+          <div className="hero-stats">
             {STATS.map((s) => (
-              <div className="hero__stat" key={s.label}>
-                <div className="hero__stat-value">{s.value}</div>
-                <div className="hero__stat-label">{s.label}</div>
+              <div className="hero-stat" key={s.label}>
+                <div className="hero-stat-value">{s.value}</div>
+                <div className="hero-stat-label">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Visual Cards */}
-        <div className="hero__visual">
-          <div className="hero__card-grid">
+        <div className="hero-visual">
+          <div className="hero-card-grid">
             {CARDS.map((card) => (
-              <div className="hero__card" key={card.title}>
-                <div className="hero__card-icon">{card.icon}</div>
-                <div className="hero__card-title">{card.title}</div>
-                <div className="hero__card-desc">{card.desc}</div>
-                <div className="hero__card-value">{card.value}</div>
-                <div style={{ fontSize: 11, color: '#555', marginTop: 2 }}>{card.subLabel}</div>
-                <div className="hero__card-bar">
-                  <div className="hero__card-bar-fill" style={{ width: `${card.bar}%` }} />
+              <div className="hero-card" key={card.title}>
+                <div className="hero-card-icon">{card.icon}</div>
+                <div className="hero-card-title">{card.title}</div>
+                <div className="hero-card-desc">{card.desc}</div>
+                <div className="hero-card-value">{card.value}</div>
+
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: '#555',
+                    marginTop: 2,
+                  }}
+                >
+                  {card.subLabel}
+                </div>
+
+                <div className="hero-card-bar">
+                  <div
+                    className="hero-card-bar-fill"
+                    style={{ width: `${card.bar}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -121,8 +141,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="hero__scroll">
-        <div className="hero__scroll-line" />
+      <div className="hero-scroll">
+        <div className="hero-scroll-line" />
         scroll
       </div>
     </section>
