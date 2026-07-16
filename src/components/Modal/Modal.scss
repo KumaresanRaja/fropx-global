@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 15, 30, 0.55);
+  backdrop-filter: blur(3px);
+  @include flex-center;
+  padding: 24px;
+  animation: modal-overlay-in 0.2s ease;
+}
+
+.modal-wrap {
+  background: $white;
+  border-radius: $radius-lg;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  max-width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: modal-wrap-in 0.22s ease;
+  overflow: hidden;
+}
+
+.modal-header {
+  @include flex-between;
+  padding: 16px 24px;
+  border-bottom: $border-subtle;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.3px;
+}
+
+.modal-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  border: none;
+  background: $gray-100;
+  color: $gray-500;
+  cursor: pointer;
+  @include flex-center;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+  &:hover {
+    background: $gray-200;
+    color: $gray-999;
+  }
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-footer {
+  padding: 12px 24px;
+  border-top: $border-subtle;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-wrap-in {
+  from { opacity: 0; transform: scale(0.96) translateY(-12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}

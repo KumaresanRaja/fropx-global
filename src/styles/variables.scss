@@ -1,0 +1,69 @@
+// =====================
+// BLUE THEME VARIABLES
+// =====================
+
+// Core
+$white: #ffffff;
+$black: #1a56db; // primary blue
+$off-white: #f0f5ff;
+$near-white: #f5f8ff;
+
+// Blue scale
+$blue-50: #eff6ff;
+$blue-100: #dbeafe;
+$blue-200: #bfdbfe;
+$blue-300: #93c5fd;
+$blue-400: #60a5fa;
+$blue-500: #3b82f6;
+$blue-600: #2563eb;
+$blue-700: #1d4ed8;
+$blue-800: #1e40af;
+$blue-900: #1e3a8a;
+
+// Gray scale (blue-tinted)
+$gray-50: #f8faff;
+$gray-100: #f0f4ff;
+$gray-150: #e8eeff;
+$gray-200: #dde5f5;
+$gray-300: #c3cfe8;
+$gray-400: #94a3b8;
+$gray-500: #64748b;
+$gray-600: #94a3b8;
+$gray-700: #334155;
+$gray-800: #1e293b;
+$gray-900: #0f172a;
+$gray-999: #0a0f1e;
+
+// Dark shades (navy-based for dark sections)
+$dark-1: #060d1f;
+$dark-2: #0a1628;
+$dark-3: #0f1e35;
+$dark-4: #162540;
+
+// Typography
+$font-primary: "Inter", sans-serif;
+
+// Spacing
+$section-padding: 100px;
+$container-max: 1300px;
+
+// Borders (light — blue-tinted)
+$border-subtle: 1px solid #dde5f5;
+$border-medium: 1px solid #c3cfe8;
+$border-strong: 1px solid #93c5fd;
+
+// Borders (dark section)
+$border-dark-subtle: 1px solid rgba(99, 179, 237, 0.12);
+$border-dark-medium: 1px solid rgba(99, 179, 237, 0.2);
+
+// Border radii
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 0.18s ease;
+$transition-base: 0.28s ease;
+$transition-slow: 0.45s ease;
