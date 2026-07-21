@@ -48,7 +48,7 @@ export default function CustomSoftwarePage() {
         <section className="sp-hero">
           <div className="sp-hero-bg-grid" />
           <div className="sp-container sp-hero-inner">
-            <button className="sp-back-btn" onClick={() => navigate('/')}>
+            <button className="sp-back-btn" onClick={() => navigate(-1)}>
               <ArrowLeft size={14} /> Back to Home
             </button>
             <div className="sp-label">Our Services</div>

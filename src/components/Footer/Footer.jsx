@@ -28,7 +28,7 @@ const FOOTER_LINKS = {
   ],
 
   Resources: [
-    { label: 'Case Studies', href: '#projects' },
+    { label: 'Case Studies', href: '/projects' },
     { label: 'Documentation', href: '#' },
     { label: 'Whitepapers', href: '#' },
     { label: 'API Reference', href: '#' },

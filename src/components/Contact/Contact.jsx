@@ -135,20 +135,17 @@ export default function Contact() {
 
           {success ? (
             <div className="contact-success-box">
-
               <div className="contact-success-icon">
                 <CheckCircle size={28} />
               </div>
-
-              <div className="contact-success-title">
-                Message Sent!
-              </div>
-
+              <div className="contact-success-title">Message Sent!</div>
               <div className="contact-success-text">
                 Thank you for reaching out. Our team will get back
                 to you within 24 hours.
               </div>
-
+              <button className="contact-reset-btn" onClick={() => setSuccess(false)}>
+                Send Another Message
+              </button>
             </div>
           ) : (
             <>

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { RiBrainLine, RiDatabase2Line, RiShoppingCartLine, RiBarChartLine, RiRobotLine, RiCloudLine } from 'react-icons/ri';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Projects.scss';
 
 const PROJECTS = [
@@ -68,9 +69,10 @@ const PROJECTS = [
 
 export default function Projects() {
   const navigate = useNavigate();
+  const ref = useScrollReveal();
   return (
     <section className="projects-section" id="projects">
-      <div className="projects-inner">
+      <div className="projects-inner reveal" ref={ref}>
         {/* Header */}
         <div className="projects-header">
           <div>

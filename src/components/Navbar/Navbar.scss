@@ -2,44 +2,35 @@
 @use "../../styles/mixins" as *;
 
 .navbar {
-  position: relative;
-  z-index: 100;
-  background: $white;
-  border-bottom: $border-subtle;
-}
-
-.navbar-sticky {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: $border-subtle;
-  box-shadow: 0 1px 12px rgba(37, 99, 235, 0.08);
-  transform: translateY(-100%);
-  opacity: 0;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  background: transparent;
+  border-bottom: none;
+  transition: background $transition-base, box-shadow $transition-base, border-color $transition-base;
 
-  &.visible {
-    transform: translateY(0);
-    opacity: 1;
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: $border-subtle;
+    box-shadow: 0 2px 20px rgba(37, 99, 235, 0.08);
   }
-}
-
-.navbar-sticky-inner {
-  @include container;
-  @include flex-between;
-  padding-top: 12px;
-  padding-bottom: 12px;
 }
 
 .navbar-topbar {
   background: $dark-1;
   padding: 7px 0;
+  transition: all $transition-base;
+  overflow: hidden;
+  max-height: 40px;
+
+  .scrolled & {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
 }
 
 .navbar-topbar-inner {
@@ -143,7 +134,7 @@
       transition:
         color $transition-fast,
         background $transition-fast;
-      &:hover {
+      &:hover, &.active {
         color: $black;
         background: $blue-50;
       }
@@ -302,6 +293,17 @@
       color: $black;
     }
   }
+}
+
+.navbar-mobile-sub {
+  padding: 9px 16px 9px 32px !important;
+  font-size: 13px !important;
+  color: $gray-400 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 2px solid $blue-100;
+  margin-left: 16px;
 }
 
 .navbar-mobile-cta {

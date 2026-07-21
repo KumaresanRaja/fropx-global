@@ -1,4 +1,5 @@
 import { CheckCircle, ArrowUpRight, TrendingUp } from 'lucide-react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Metrics.scss';
 
 const BULLETS = [
@@ -19,9 +20,10 @@ const CARDS = [
 ];
 
 export default function Metrics() {
+  const ref = useScrollReveal();
   return (
     <section className="metrics-section" id="metrics">
-      <div className="metrics-inner">
+      <div className="metrics-inner reveal" ref={ref}>
         <div className="metrics-top">
           {/* Left */}
           <div className="metrics-left">

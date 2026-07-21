@@ -119,7 +119,7 @@ export default function ContactPage() {
         <section className="cp-hero">
           <div className="cp-hero-bg-grid" />
           <div className="cp-container cp-hero-inner">
-            <button className="cp-back-btn" onClick={() => navigate('/')}>
+            <button className="cp-back-btn" onClick={() => navigate(-1)}>
               <ArrowLeft size={15} /> Back to Home
             </button>
             <div className="cp-label">Contact Us</div>

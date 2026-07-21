@@ -1,4 +1,5 @@
 import { CheckCircle, Users, Target, Lightbulb, Award, Heart } from 'lucide-react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './About.scss';
 
 const VALUES = [
@@ -38,12 +39,14 @@ const CERTS = [
 ];
 
 export default function About() {
+  const leftRef = useScrollReveal();
+  const rightRef = useScrollReveal();
   return (
     <section className="about-section" id="about">
       <div className="about-container">
 
         {/* Content */}
-        <div className="about-content">
+        <div className="about-content reveal reveal-left" ref={leftRef}>
           <div className="about-label">About Us</div>
 
           <h2 className="about-title">
@@ -83,7 +86,7 @@ export default function About() {
         </div>
 
         {/* Visual */}
-        <div className="about-visual">
+        <div className="about-visual reveal reveal-right" ref={rightRef}>
           <div className="about-visual-wrapper">
 
             {/* Stats */}

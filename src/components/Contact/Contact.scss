@@ -269,6 +269,23 @@
   color: $gray-500;
 }
 
+.contact-reset-btn {
+  margin-top: 20px;
+  padding: 10px 28px;
+  background: none;
+  border: $border-medium;
+  border-radius: $radius-full;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all $transition-fast;
+  &:hover {
+    background: $gray-100;
+    border-color: $black;
+  }
+}
+
 @keyframes contact-fade-in {
   from {
     opacity: 0;

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Brain, BarChart3, Settings, Cloud, Code2, Rocket,
   CheckCircle, ArrowUpRight, ChevronRight
@@ -8,6 +9,7 @@ import './Services.scss';
 const SERVICES = [
   {
     id: 'ai',
+    route: '/services/ai-automation',
     label: 'AI & Automation',
     icon: <Brain size={16} />,
     title: 'AI & Intelligent Systems',
@@ -23,6 +25,7 @@ const SERVICES = [
   },
   {
     id: 'data',
+    route: '/services/data-engineering',
     label: 'Data Engineering',
     icon: <BarChart3 size={16} />,
     title: 'Data Engineering & Analytics',
@@ -38,6 +41,7 @@ const SERVICES = [
   },
   {
     id: 'automation',
+    route: '/services/ai-automation',
     label: 'Automation',
     icon: <Settings size={16} />,
     title: 'Automation & Process Optimization',
@@ -53,6 +57,7 @@ const SERVICES = [
   },
   {
     id: 'cloud',
+    route: '/services/cloud-devops',
     label: 'Cloud & DevOps',
     icon: <Cloud size={16} />,
     title: 'Cloud & DevOps Engineering',
@@ -68,6 +73,7 @@ const SERVICES = [
   },
   {
     id: 'software',
+    route: '/services/custom-software',
     label: 'Custom Software',
     icon: <Code2 size={16} />,
     title: 'Custom Software Development',
@@ -83,6 +89,7 @@ const SERVICES = [
   },
   {
     id: 'product',
+    route: '/services/product-engineering',
     label: 'Product Engineering',
     icon: <Rocket size={16} />,
     title: 'Product Engineering & Innovation',
@@ -102,6 +109,7 @@ const CARDS = SERVICES.slice(0, 6);
 
 export default function Services() {
   const [active, setActive] = useState('ai');
+  const navigate = useNavigate();
   const panel = SERVICES.find((s) => s.id === active);
 
   return (
@@ -148,7 +156,7 @@ export default function Services() {
               </ul>
               <button
                 className="services-panel-cta"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate(panel.route)}
               >
                 Get Started <ArrowUpRight size={15} />
               </button>
@@ -180,12 +188,13 @@ export default function Services() {
             <div
               className="services-card"
               key={card.id}
-              onClick={() => setActive(card.id)}
+              onClick={() => navigate(card.route)}
             >
               <div className="services-card-icon">{card.icon}</div>
               <div className="services-card-title">{card.title}</div>
               <div className="services-card-desc">{card.bullets[0]}</div>
               <div className="services-card-arrow">
+                <span className="services-card-arrow-text">View Service</span>
                 <ChevronRight size={18} />
               </div>
             </div>
