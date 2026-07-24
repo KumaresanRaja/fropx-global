@@ -88,7 +88,7 @@ export default function ConsultationModal({ open, onClose }) {
           </div>
 
           <div className="cm-left-footer">
-            Trusted by 200+ companies worldwide
+            Trusted by 10+ companies worldwide
           </div>
         </div>
 

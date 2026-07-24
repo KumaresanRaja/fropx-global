@@ -16,7 +16,8 @@ const SERVICES_LIST = [
   'Custom Software Development',
   'Automation & RPA',
   'Product Engineering',
-  'Other / General Inquiry',
+  'Product Data Management',
+  'Supply Chain',
 ];
 
 const PROCESS_STEPS = [
@@ -48,26 +49,12 @@ const PROCESS_STEPS = [
 
 const OFFICES = [
   {
-    city: 'San Francisco',
-    country: 'USA',
-    address: '101 Market Street, Suite 400',
-    timezone: 'PST (UTC-8)',
-    flag: '🇺🇸',
-  },
-  {
-    city: 'New York',
-    country: 'USA',
-    address: '350 Fifth Avenue, Floor 22',
-    timezone: 'EST (UTC-5)',
-    flag: '🇺🇸',
-  },
-  {
-    city: 'London',
-    country: 'UK',
-    address: '1 Canada Square, Canary Wharf',
-    timezone: 'GMT (UTC+0)',
-    flag: '🇬🇧',
-  },
+    city: 'Dharmapuri',
+    country: 'India',
+    address: 'Marandahalli,Palacode',
+    timezone: 'IST (UTC+5:30)',
+    flag: 'IN',
+  }
 ];
 
 const FAQS = [
@@ -80,8 +67,8 @@ const FAQS = [
     a: 'We work with both. From early-stage startups building their first MVP to Fortune 500 enterprises modernizing legacy systems — our engagement models are flexible.',
   },
   {
-    q: 'What does the free consultation include?',
-    a: 'A 30-minute call with a senior solutions architect to discuss your goals, technical requirements, and a high-level roadmap — completely free, no strings attached.',
+    q: "What does the free consultation include?",
+    a: "Our free consultation is designed to understand your business, challenges, and goals. We analyze your current processes, identify opportunities for improvement, and recommend the right technology solutions, architecture, and digital strategy to help your business grow—completely free, with no obligation."
   },
   {
     q: 'Do you offer fixed-price or time & material contracts?',
@@ -150,9 +137,9 @@ export default function ContactPage() {
               </p>
               <div className="cp-details">
                 {[
-                  { icon: <Mail size={18} />, label: 'Email', value: 'contact@FROPXGlobal.com' },
-                  { icon: <Phone size={18} />, label: 'Phone', value: '+1 (555) 123-4567' },
-                  { icon: <MapPin size={18} />, label: 'Offices', value: 'SF · New York · London' },
+                  { icon: <Mail size={18} />, label: 'Email', value: 'fropx.connect@gmail.com' },
+                  { icon: <Phone size={18} />, label: 'Phone', value: '+91 8248981175' },
+                  { icon: <MapPin size={18} />, label: 'Offices', value: 'Dharmapuri · Tamil Nadu · India' },
                 ].map((d) => (
                   <div className="cp-detail-item" key={d.label}>
                     <div className="cp-detail-icon">{d.icon}</div>
@@ -238,7 +225,7 @@ export default function ContactPage() {
           </div>
         </section>
 
- 
+
 
         {/* FAQ */}
         <section className="cp-faq">

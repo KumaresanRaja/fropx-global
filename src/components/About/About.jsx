@@ -122,11 +122,11 @@ export default function About() {
 
               <div>
                 <div className="about-badge-title">
-                  10+ Years of Excellence
+                  3+ Years of Excellence
                 </div>
 
                 <div className="about-badge-subtitle">
-                  Trusted by 200+ global clients across 30+ countries
+                  Trusted by 10+ global clients across 5+ countries
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ import useScrollReveal from '../../hooks/useScrollReveal';
 import './Metrics.scss';
 
 const BULLETS = [
-  '10+ Years of Industry Experience',
+  '3+ Years of Industry Experience',
   '100% Security Compliant (ISO 27001 & SOC 2)',
   '100% Collaborative & Transparent Teams',
   '1.5x Faster Time-to-Market with prebuilt packages',

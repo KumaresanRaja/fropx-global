@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './Hero.scss';
 
 const STATS = [
-  { value: '500+', label: 'Projects Delivered' },
+  { value: '10+', label: 'Projects Delivered' },
   { value: '97%', label: 'Client Satisfaction' },
-  { value: '10+', label: 'Years Experience' },
+  { value: '3+', label: 'Years Experience' },
   { value: '60%', label: 'Cost Reduction' },
 ];
 
