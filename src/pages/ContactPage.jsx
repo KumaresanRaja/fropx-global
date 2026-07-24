@@ -235,7 +235,7 @@ export default function ContactPage() {
               <h2 className="cp-section-title">Common <em>Questions</em></h2>
               <p className="cp-faq-sub">
                 Can&apos;t find your answer?{' '}
-                <a href="mailto:contact@FROPXGlobal.com">Email us directly.</a>
+                <a href="mailto:fropx.connect@gmail.com">Email us directly.</a>
               </p>
             </div>
             <div className="cp-faq-list">

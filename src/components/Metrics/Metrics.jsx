@@ -11,12 +11,12 @@ const BULLETS = [
 ];
 
 const CARDS = [
-  { value: '500+', label: 'Delivered Applications' },
+  { value: '50+', label: 'Delivered Applications' },
   { value: '95%', label: 'Faster Time-to-Market' },
   { value: '97%', label: 'Client Trust & Support Rate' },
   { value: '3+', label: 'GenAI & Agentic Use Cases' },
   { value: '60%', label: 'Technical Debt Reduction' },
-  { value: '200+', label: 'Global Clients Served' },
+  { value: '10+', label: 'Global Clients Served' },
 ];
 
 export default function Metrics() {

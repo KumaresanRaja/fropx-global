@@ -26,10 +26,10 @@ const VALUES = [
 ];
 
 const STATS = [
-  { label: '10+', sub: 'Years Experience' },
-  { label: '500+', sub: 'Projects Done' },
-  { label: '50+', sub: 'Team Members' },
-  { label: '30+', sub: 'Countries Served' },
+  { label: '3+', sub: 'Years Experience' },
+  { label: '10+', sub: 'Projects Done' },
+  { label: '30+', sub: 'Team Members' },
+  { label: '10+', sub: 'Countries Served' },
 ];
 
 const CERTS = [

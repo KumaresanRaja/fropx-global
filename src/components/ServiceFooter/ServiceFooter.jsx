@@ -52,11 +52,11 @@ export default function ServiceFooter() {
 
           <div className="sf-contact">
             <div className="sf-col-title">Contact</div>
-            <a href="mailto:contact@FROPXGlobal.com" className="sf-contact-item">
-              <Mail size={14} /> contact@FROPXGlobal.com
+            <a href="mailto:fropx.connect@gmail.com" className="sf-contact-item">
+              <Mail size={14} /> fropx.connect@gmail.com
             </a>
             <a href="tel:+15551234567" className="sf-contact-item">
-              <Phone size={14} /> +1 (555) 123-4567
+              <Phone size={14} /> +91 8248981175
             </a>
             <button className="sf-cta" onClick={() => navigate('/contact-us')}>
               Free Consultation <ArrowUpRight size={14} />
