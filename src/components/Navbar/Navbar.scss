@@ -2,35 +2,20 @@
 @use "../../styles/mixins" as *;
 
 .navbar {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
-  border-bottom: none;
-  transition: background $transition-base, box-shadow $transition-base, border-color $transition-base;
-
-  &.scrolled {
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: $border-subtle;
-    box-shadow: 0 2px 20px rgba(37, 99, 235, 0.08);
-  }
+  background: $white;
+  border-bottom: $border-subtle;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.06);
 }
 
 .navbar-topbar {
   background: $dark-1;
   padding: 7px 0;
-  transition: all $transition-base;
   overflow: hidden;
-  max-height: 40px;
-
-  .scrolled & {
-    max-height: 0;
-    padding: 0;
-    opacity: 0;
-  }
 }
 
 .navbar-topbar-inner {
@@ -53,9 +38,7 @@
     align-items: center;
     gap: 6px;
     transition: color $transition-fast;
-    &:hover {
-      color: $blue-300;
-    }
+    &:hover { color: $blue-300; }
   }
 }
 
@@ -74,8 +57,8 @@
 .navbar-main {
   @include container;
   @include flex-between;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .navbar-logo {
@@ -86,16 +69,11 @@
   color: $black;
 }
 
-.navbar-logo-icon {
-  width: 36px;
-  height: 36px;
-  background: $black;
+.navbar-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
   border-radius: 8px;
-  @include flex-center;
-  color: $white;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: -1px;
 }
 
 .navbar-logo-text {
@@ -114,9 +92,7 @@
   align-items: center;
   gap: 2px;
   list-style: none;
-  @include responsive(lg) {
-    display: none;
-  }
+  @include responsive(lg) { display: none; }
 
   li {
     position: relative;
@@ -131,9 +107,7 @@
       font-size: 14px;
       font-weight: 500;
       border-radius: $radius-sm;
-      transition:
-        color $transition-fast,
-        background $transition-fast;
+      transition: color $transition-fast, background $transition-fast;
       &:hover, &.active {
         color: $black;
         background: $blue-50;
@@ -157,7 +131,7 @@
   border: $border-subtle;
   border-radius: $radius-lg;
   padding: 8px;
-  min-width: 230px;
+  min-width: 240px;
   opacity: 0;
   visibility: hidden;
   transition: all $transition-base;
@@ -227,9 +201,7 @@
     transform: translateY(-1px);
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
   }
-  @include responsive(md) {
-    display: none;
-  }
+  @include responsive(md) { display: none; }
 }
 
 .navbar-hamburger {
@@ -241,9 +213,7 @@
   background: none;
   border: none;
   color: $black;
-  @include responsive(lg) {
-    display: flex;
-  }
+  @include responsive(lg) { display: flex; }
 
   span {
     display: block;
@@ -255,15 +225,9 @@
   }
 
   &.open {
-    span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    span:nth-child(2) {
-      opacity: 0;
-    }
-    span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+    span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
   }
 }
 
@@ -275,9 +239,7 @@
   padding: 16px;
   gap: 4px;
   @include responsive(lg) {
-    &.open {
-      display: flex;
-    }
+    &.open { display: flex; }
   }
 
   a {

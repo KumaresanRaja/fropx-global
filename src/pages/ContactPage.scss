@@ -51,15 +51,6 @@
   border-bottom: $border-subtle;
 }
 
-.cp-hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(#f0f0f0 1px, transparent 1px),
-    linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-}
 
 .cp-hero-inner {
   position: relative;
@@ -225,15 +216,6 @@
   overflow: hidden;
 }
 
-.cp-contact-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(#ebebeb 1px, transparent 1px),
-    linear-gradient(90deg, #ebebeb 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-}
 
 .cp-contact-grid {
   position: relative;

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronDown, ArrowUpRight, Zap, Globe, Shield, HeartHandshake, Rocket } from 'lucide-react';
+import logoImg from '../../assets/Images/Logo.svg';
 import './Navbar.scss';
 
 const NAV_LINKS = [
@@ -22,16 +23,9 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar({ isContactPage = false }) {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const isActive = (href) => {
     if (href.startsWith('/')) return location.pathname === href;
@@ -54,7 +48,7 @@ export default function Navbar({ isContactPage = false }) {
   };
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <nav className="navbar">
       {/* Top Bar */}
       <div className="navbar-topbar">
         <div className="navbar-topbar-inner">
@@ -76,7 +70,7 @@ export default function Navbar({ isContactPage = false }) {
       {/* Main Nav */}
       <div className="navbar-main">
         <a className="navbar-logo" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
-          <div className="navbar-logo-icon">NX</div>
+          <img src={logoImg} alt="FROPX Global" className="navbar-logo-img" />
           <div className="navbar-logo-text">FROPX Global <span>Technologies</span></div>
         </a>
 

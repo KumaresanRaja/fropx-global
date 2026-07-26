@@ -10,44 +10,10 @@
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.62) 0%, rgba(0, 10, 30, 0.75) 100%),
     url("/src/assets/hero.jpeg") center center / cover no-repeat;
-  padding-top: 70px;
+  padding-top: 0;
   overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.hero-bg-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-}
-
-.hero-bg-glow-1 {
-  background: rgba(59, 130, 246, 0.15);
-  top: -100px;
-  right: -80px;
-}
-
-.hero-bg-glow-2 {
-  background: rgba(29, 78, 216, 0.1);
-  bottom: -150px;
-  left: -80px;
-}
 
 .hero-inner {
   @include container;

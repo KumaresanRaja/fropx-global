@@ -57,12 +57,7 @@ export default function Hero() {
 
   return (
     <section className="hero-section" id="hero">
-      {/* Background */}
-      <div className="hero-bg">
-        <div className="hero-bg-grid" />
-        <div className="hero-bg-glow hero-bg-glow-1" />
-        <div className="hero-bg-glow hero-bg-glow-2" />
-      </div>
+
 
       <div className="hero-inner">
         {/* Content */}

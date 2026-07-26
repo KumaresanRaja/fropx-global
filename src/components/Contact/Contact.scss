@@ -8,20 +8,6 @@
   overflow: hidden;
 }
 
-.contact-background {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.contact-background-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(#dbeafe 1px, transparent 1px),
-    linear-gradient(90deg, #dbeafe 1px, transparent 1px);
-  background-size: 80px 80px;
-}
 
 .contact-container {
   @include container;

@@ -117,7 +117,7 @@ export default function ContactPage() {
 
         {/* Hero Banner */}
         <section className="cp-hero">
-          <div className="cp-hero-bg-grid" />
+          
           <div className="cp-container cp-hero-inner">
             <button className="cp-back-btn" onClick={() => navigate(-1)}>
               <ArrowLeft size={15} /> Back to Home
@@ -139,7 +139,7 @@ export default function ContactPage() {
 
         {/* Contact Form + Info */}
         <section className="cp-contact">
-          <div className="cp-contact-bg-grid" />
+          
           <div className="cp-container cp-contact-grid">
 
             <div className="cp-info">

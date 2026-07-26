@@ -54,9 +54,7 @@ export default function Contact() {
   return (
     <section className="contact-section" id="contact">
 
-      <div className="contact-background">
-        <div className="contact-background-grid" />
-      </div>
+      
 
       <div className="contact-container">
 
@@ -175,7 +173,7 @@ export default function Contact() {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="John Smith"
+                      placeholder="Peter"
                       required
                     />
                   </div>
@@ -191,7 +189,7 @@ export default function Contact() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="john@company.com"
+                      placeholder="peter@company.com"
                       required
                     />
                   </div>
@@ -211,7 +209,7 @@ export default function Contact() {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 98765 43210"
                     />
                   </div>
 
@@ -226,7 +224,7 @@ export default function Contact() {
                       name="company"
                       value={form.company}
                       onChange={handleChange}
-                      placeholder="Your Company"
+                      placeholder="Peter's Company"
                     />
                   </div>
 
@@ -268,7 +266,7 @@ export default function Contact() {
                     name="message"
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Describe your project, goals, timeline, or any specific challenges you're facing..."
+                    placeholder="உங்கள் திட்டம், இலக்குகள் அல்லது சவால்களை விவரிக்கவும்..."
                     required
                   />
                 </div>
