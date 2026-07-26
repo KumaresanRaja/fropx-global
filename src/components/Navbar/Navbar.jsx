@@ -53,11 +53,8 @@ export default function Navbar({ isContactPage = false }) {
       <div className="navbar-topbar">
         <div className="navbar-topbar-inner">
           <div className="navbar-topbar-left">
-            <a href="mailto:contact@FROPXGlobal.com">
-              <Globe size={12} /> contact@FROPXGlobal.com
-            </a>
-            <a href="tel:+15551234567">
-              <Shield size={12} /> +1 (555) 123-4567
+            <a href="mailto:fropx.connect@gmail.com">
+              <Globe size={12} /> fropx.connect@gmail.com
             </a>
           </div>
           <div className="navbar-topbar-right">

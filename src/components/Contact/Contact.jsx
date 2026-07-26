@@ -88,7 +88,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  contact@FROPXGlobal.com
+                  fropx.connect@gmail.com
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  +1 (555) 123-4567
+                  +91 8248981175
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  San Francisco, CA — New York, NY — London, UK
+                  Dharmapuri · Tamil Nadu · India
                 </div>
               </div>
             </div>

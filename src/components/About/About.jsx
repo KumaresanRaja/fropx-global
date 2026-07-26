@@ -26,10 +26,10 @@ const VALUES = [
 ];
 
 const STATS = [
-  { label: '10+', sub: 'Years Experience' },
-  { label: '500+', sub: 'Projects Done' },
-  { label: '50+', sub: 'Team Members' },
-  { label: '30+', sub: 'Countries Served' },
+  { label: '3+', sub: 'Years Experience' },
+  { label: '10+', sub: 'Projects Done' },
+  { label: '30+', sub: 'Team Members' },
+  { label: '10+', sub: 'Countries Served' },
 ];
 
 const CERTS = [
@@ -122,11 +122,11 @@ export default function About() {
 
               <div>
                 <div className="about-badge-title">
-                  10+ Years of Excellence
+                  3+ Years of Excellence
                 </div>
 
                 <div className="about-badge-subtitle">
-                  Trusted by 200+ global clients across 30+ countries
+                  Trusted by 10+ global clients across 5+ countries
                 </div>
               </div>
             </div>

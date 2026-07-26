@@ -35,15 +35,7 @@ const LOGOS = [
   {
     name: 'Dropbox',
     icon: <RiDropboxFill size={20} />,
-  },
-  {
-    name: 'Shopify',
-    icon: <RiShoppingBag2Fill size={20} />,
-  },
-  {
-    name: 'LinkedIn',
-    icon: <RiLinkedinFill size={20} />,
-  },
+  }
 ];
 
 // Duplicate for seamless marquee loop
