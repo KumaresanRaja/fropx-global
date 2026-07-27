@@ -54,9 +54,7 @@ export default function Contact() {
   return (
     <section className="contact-section" id="contact">
 
-      <div className="contact-background">
-        <div className="contact-background-grid" />
-      </div>
+      
 
       <div className="contact-container">
 
@@ -90,7 +88,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  contact@FROPXGlobal.com
+                  fropx.connect@gmail.com
                 </div>
               </div>
             </div>
@@ -106,7 +104,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  +1 (555) 123-4567
+                  +91 8248981175
                 </div>
               </div>
             </div>
@@ -122,7 +120,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  San Francisco, CA — New York, NY — London, UK
+                  Dharmapuri · Tamil Nadu · India
                 </div>
               </div>
             </div>
@@ -135,20 +133,17 @@ export default function Contact() {
 
           {success ? (
             <div className="contact-success-box">
-
               <div className="contact-success-icon">
                 <CheckCircle size={28} />
               </div>
-
-              <div className="contact-success-title">
-                Message Sent!
-              </div>
-
+              <div className="contact-success-title">Message Sent!</div>
               <div className="contact-success-text">
                 Thank you for reaching out. Our team will get back
                 to you within 24 hours.
               </div>
-
+              <button className="contact-reset-btn" onClick={() => setSuccess(false)}>
+                Send Another Message
+              </button>
             </div>
           ) : (
             <>
@@ -178,7 +173,7 @@ export default function Contact() {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="John Smith"
+                      placeholder="Peter"
                       required
                     />
                   </div>
@@ -194,7 +189,7 @@ export default function Contact() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="john@company.com"
+                      placeholder="peter@company.com"
                       required
                     />
                   </div>
@@ -214,7 +209,7 @@ export default function Contact() {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 98765 43210"
                     />
                   </div>
 
@@ -229,7 +224,7 @@ export default function Contact() {
                       name="company"
                       value={form.company}
                       onChange={handleChange}
-                      placeholder="Your Company"
+                      placeholder="Peter's Company"
                     />
                   </div>
 
@@ -271,7 +266,7 @@ export default function Contact() {
                     name="message"
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Describe your project, goals, timeline, or any specific challenges you're facing..."
+                    placeholder="உங்கள் திட்டம், இலக்குகள் அல்லது சவால்களை விவரிக்கவும்..."
                     required
                   />
                 </div>

@@ -1,8 +1,9 @@
 import { CheckCircle, ArrowUpRight, TrendingUp } from 'lucide-react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Metrics.scss';
 
 const BULLETS = [
-  '10+ Years of Industry Experience',
+  '3+ Years of Industry Experience',
   '100% Security Compliant (ISO 27001 & SOC 2)',
   '100% Collaborative & Transparent Teams',
   '1.5x Faster Time-to-Market with prebuilt packages',
@@ -10,18 +11,19 @@ const BULLETS = [
 ];
 
 const CARDS = [
-  { value: '500+', label: 'Delivered Applications' },
+  { value: '50+', label: 'Delivered Applications' },
   { value: '95%', label: 'Faster Time-to-Market' },
   { value: '97%', label: 'Client Trust & Support Rate' },
   { value: '3+', label: 'GenAI & Agentic Use Cases' },
   { value: '60%', label: 'Technical Debt Reduction' },
-  { value: '200+', label: 'Global Clients Served' },
+  { value: '10+', label: 'Global Clients Served' },
 ];
 
 export default function Metrics() {
+  const ref = useScrollReveal();
   return (
     <section className="metrics-section" id="metrics">
-      <div className="metrics-inner">
+      <div className="metrics-inner reveal" ref={ref}>
         <div className="metrics-top">
           {/* Left */}
           <div className="metrics-left">

@@ -1,4 +1,5 @@
 import { Star, Quote } from 'lucide-react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './Testimonials.scss';
 
 const TESTIMONIALS = [
@@ -45,9 +46,10 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
+  const ref = useScrollReveal();
   return (
     <section className="testimonials-section" id="testimonials">
-      <div className="testimonials-inner">
+      <div className="testimonials-inner reveal" ref={ref}>
         {/* Header */}
         <div className="testimonials-header">
           <div className="testimonials-label">Client Reviews</div>

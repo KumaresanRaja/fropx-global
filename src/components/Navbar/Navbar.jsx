@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, ArrowUpRight, Zap, Globe, Shield, HeartHandshake } from 'lucide-react';
+import { ChevronDown, ArrowUpRight, Zap, Globe, Shield, HeartHandshake, Rocket } from 'lucide-react';
+import logoImg from '../../assets/Images/Logo.svg';
 import './Navbar.scss';
 
 const NAV_LINKS = [
@@ -9,10 +10,11 @@ const NAV_LINKS = [
     label: 'Services',
     href: '#services',
     dropdown: [
-      { label: 'AI & Intelligent Systems', icon: <Zap size={14} />, href: '#services' },
-      { label: 'Data Engineering', icon: <Globe size={14} />, href: '#services' },
-      { label: 'Cloud & DevOps', icon: <Shield size={14} />, href: '#services' },
-      { label: 'Custom Software', icon: <HeartHandshake size={14} />, href: '#services' },
+      { label: 'AI & Intelligent Systems', icon: <Zap size={14} />, href: '/services/ai-automation', isPage: true },
+      { label: 'Data Engineering', icon: <Globe size={14} />, href: '/services/data-engineering', isPage: true },
+      { label: 'Cloud & DevOps', icon: <Shield size={14} />, href: '/services/cloud-devops', isPage: true },
+      { label: 'Custom Software', icon: <HeartHandshake size={14} />, href: '/services/custom-software', isPage: true },
+      { label: 'Product Engineering', icon: <Rocket size={14} />, href: '/services/product-engineering', isPage: true },
     ],
   },
   { label: 'Projects', href: '#projects' },
@@ -21,16 +23,15 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar({ isContactPage = false }) {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const isActive = (href) => {
+    if (href.startsWith('/')) return location.pathname === href;
+    if (href === '#services') return location.pathname.startsWith('/services');
+    return false;
+  };
 
   const handleNavClick = (href, isPage) => {
     setMobileOpen(false);
@@ -47,16 +48,13 @@ export default function Navbar({ isContactPage = false }) {
   };
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <nav className="navbar">
       {/* Top Bar */}
       <div className="navbar-topbar">
         <div className="navbar-topbar-inner">
           <div className="navbar-topbar-left">
-            <a href="mailto:contact@FROPXGlobal.com">
-              <Globe size={12} /> contact@FROPXGlobal.com
-            </a>
-            <a href="tel:+15551234567">
-              <Shield size={12} /> +1 (555) 123-4567
+            <a href="mailto:fropx.connect@gmail.com">
+              <Globe size={12} /> fropx.connect@gmail.com
             </a>
           </div>
           <div className="navbar-topbar-right">
@@ -68,15 +66,15 @@ export default function Navbar({ isContactPage = false }) {
 
       {/* Main Nav */}
       <div className="navbar-main">
-        <a className="navbar-logo" href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <div className="navbar-logo-icon">NX</div>
+        <a className="navbar-logo" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+          <img src={logoImg} alt="FROPX Global" className="navbar-logo-img" />
           <div className="navbar-logo-text">FROPX Global <span>Technologies</span></div>
         </a>
 
         <ul className="navbar-links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href} onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }}>
+              <a href={link.href} onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }} className={isActive(link.href) ? 'active' : ''}>
                 {link.label}
                 {link.dropdown && <ChevronDown size={14} />}
               </a>
@@ -87,7 +85,7 @@ export default function Navbar({ isContactPage = false }) {
                       key={item.label}
                       href={item.href}
                       className="navbar-dropdown-item"
-                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href, false); }}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href, item.isPage); }}
                     >
                       <div className="navbar-dropdown-icon">{item.icon}</div>
                       {item.label}
@@ -120,13 +118,24 @@ export default function Navbar({ isContactPage = false }) {
       {/* Mobile Menu */}
       <div className={`navbar-mobile${mobileOpen ? ' open' : ''}`}>
         {NAV_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }}
-          >
-            {link.label}
-          </a>
+          <div key={link.label}>
+            <a
+              href={link.href}
+              onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isPage); }}
+            >
+              {link.label}
+            </a>
+            {link.dropdown && link.dropdown.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="navbar-mobile-sub"
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.href, item.isPage); }}
+              >
+                {item.icon} {item.label}
+              </a>
+            ))}
+          </div>
         ))}
         <a
           className="navbar-mobile-cta"

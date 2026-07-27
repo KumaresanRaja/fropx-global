@@ -1,4 +1,5 @@
 import { CheckCircle, Users, Target, Lightbulb, Award, Heart } from 'lucide-react';
+import useScrollReveal from '../../hooks/useScrollReveal';
 import './About.scss';
 
 const VALUES = [
@@ -25,10 +26,10 @@ const VALUES = [
 ];
 
 const STATS = [
-  { label: '10+', sub: 'Years Experience' },
-  { label: '500+', sub: 'Projects Done' },
-  { label: '50+', sub: 'Team Members' },
-  { label: '30+', sub: 'Countries Served' },
+  { label: '3+', sub: 'Years Experience' },
+  { label: '10+', sub: 'Projects Done' },
+  { label: '30+', sub: 'Team Members' },
+  { label: '10+', sub: 'Countries Served' },
 ];
 
 const CERTS = [
@@ -38,12 +39,14 @@ const CERTS = [
 ];
 
 export default function About() {
+  const leftRef = useScrollReveal();
+  const rightRef = useScrollReveal();
   return (
     <section className="about-section" id="about">
       <div className="about-container">
 
         {/* Content */}
-        <div className="about-content">
+        <div className="about-content reveal reveal-left" ref={leftRef}>
           <div className="about-label">About Us</div>
 
           <h2 className="about-title">
@@ -83,7 +86,7 @@ export default function About() {
         </div>
 
         {/* Visual */}
-        <div className="about-visual">
+        <div className="about-visual reveal reveal-right" ref={rightRef}>
           <div className="about-visual-wrapper">
 
             {/* Stats */}
@@ -119,11 +122,11 @@ export default function About() {
 
               <div>
                 <div className="about-badge-title">
-                  10+ Years of Excellence
+                  3+ Years of Excellence
                 </div>
 
                 <div className="about-badge-subtitle">
-                  Trusted by 200+ global clients across 30+ countries
+                  Trusted by 10+ global clients across 5+ countries
                 </div>
               </div>
             </div>

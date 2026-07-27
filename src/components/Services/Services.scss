@@ -266,11 +266,25 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 6px;
   margin-top: 18px;
   color: $gray-999;
   transition:
     color $transition-fast,
     transform $transition-fast;
+}
+
+.services-card-arrow-text {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all $transition-base;
+}
+
+.services-card:hover .services-card-arrow-text {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @keyframes fadeIn {

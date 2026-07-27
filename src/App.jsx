@@ -11,6 +11,7 @@ import Metrics from './components/Metrics/Metrics';
 import Projects from './components/Projects/Projects';
 import Testimonials from './components/Testimonials/Testimonials';
 import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact';
 import ContactPage from './pages/ContactPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AIAutomationPage from './pages/services/AIAutomationPage';
@@ -20,6 +21,7 @@ import CustomSoftwarePage from './pages/services/CustomSoftwarePage';
 import ProductEngineeringPage from './pages/services/ProductEngineeringPage';
 import PageLoader from './components/PageLoader/PageLoader';
 import ConsultationModal from './components/Modal/ConsultationModal';
+import NotFound from './pages/NotFound';
 
 function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -46,6 +48,7 @@ function Home() {
         <Metrics />
         <Projects />
         <Testimonials />
+        <Contact />
       </main>
       <Footer />
     </>
@@ -100,6 +103,7 @@ export default function App() {
           <Route path="/services/cloud-devops" element={<CloudDevOpsPage />} />
           <Route path="/services/custom-software" element={<CustomSoftwarePage />} />
           <Route path="/services/product-engineering" element={<ProductEngineeringPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </RouteLoader>
     </BrowserRouter>

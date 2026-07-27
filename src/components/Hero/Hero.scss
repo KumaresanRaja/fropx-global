@@ -10,51 +10,16 @@
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.62) 0%, rgba(0, 10, 30, 0.75) 100%),
     url("/src/assets/hero.jpeg") center center / cover no-repeat;
-  padding-top: 70px;
+  padding-top: 0;
   overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.hero-bg-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-}
-
-.hero-bg-glow-1 {
-  background: rgba(59, 130, 246, 0.15);
-  top: -100px;
-  right: -80px;
-}
-
-.hero-bg-glow-2 {
-  background: rgba(29, 78, 216, 0.1);
-  bottom: -150px;
-  left: -80px;
-}
 
 .hero-inner {
   @include container;
   position: relative;
   z-index: 1;
-  flex-direction: column;
-  display: flex;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
@@ -92,6 +57,13 @@
   }
 }
 
+.hero-content {
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+}
+
 .hero-title {
   font-size: clamp(36px, 4vw, 60px);
   font-weight: 600;
@@ -99,11 +71,8 @@
   letter-spacing: -2.5px;
   color: $white;
   margin-bottom: 22px;
-  text-align: center;
-  width: 90%;
-  @media (max-width: 768px) {
-    width: 95%;
-  }
+  text-align: left;
+  width: 100%;
 
   em {
     font-style: normal;
@@ -115,9 +84,9 @@
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.75;
-  width: 60%;
+  width: 100%;
   margin-bottom: 36px;
-  text-align: center;
+  text-align: left;
 
   @include responsive(md) {
     font-size: 16px;
@@ -194,13 +163,6 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.55);
   margin-top: 3px;
-}
-
-.hero-content {
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
 }
 
 .hero-visual {

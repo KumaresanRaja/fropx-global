@@ -1,10 +1,11 @@
 import { ArrowUpRight, Play, Brain, BarChart3, Settings, Cloud } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Hero.scss';
 
 const STATS = [
-  { value: '500+', label: 'Projects Delivered' },
+  { value: '10+', label: 'Projects Delivered' },
   { value: '97%', label: 'Client Satisfaction' },
-  { value: '10+', label: 'Years Experience' },
+  { value: '3+', label: 'Years Experience' },
   { value: '60%', label: 'Cost Reduction' },
 ];
 
@@ -16,6 +17,7 @@ const CARDS = [
     value: '3x',
     subLabel: 'Faster ROI',
     bar: 85,
+    route: '/services/ai-automation',
   },
   {
     icon: <BarChart3 size={20} />,
@@ -24,6 +26,7 @@ const CARDS = [
     value: '99.9%',
     subLabel: 'Uptime SLA',
     bar: 99,
+    route: '/services/data-engineering',
   },
   {
     icon: <Settings size={20} />,
@@ -32,6 +35,7 @@ const CARDS = [
     value: '60%',
     subLabel: 'Cost Saved',
     bar: 60,
+    route: '/services/ai-automation',
   },
   {
     icon: <Cloud size={20} />,
@@ -40,10 +44,12 @@ const CARDS = [
     value: '1.5x',
     subLabel: 'Speed to Market',
     bar: 75,
+    route: '/services/cloud-devops',
   },
 ];
 
 export default function Hero() {
+  const navigate = useNavigate();
   const handleScroll = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -51,12 +57,7 @@ export default function Hero() {
 
   return (
     <section className="hero-section" id="hero">
-      {/* Background */}
-      <div className="hero-bg">
-        <div className="hero-bg-grid" />
-        <div className="hero-bg-glow hero-bg-glow-1" />
-        <div className="hero-bg-glow hero-bg-glow-2" />
-      </div>
+
 
       <div className="hero-inner">
         {/* Content */}
@@ -112,7 +113,7 @@ export default function Hero() {
         <div className="hero-visual">
           <div className="hero-card-grid">
             {CARDS.map((card) => (
-              <div className="hero-card" key={card.title}>
+              <div className="hero-card" key={card.title} onClick={() => navigate(card.route)} style={{ cursor: 'pointer' }}>
                 <div className="hero-card-icon">{card.icon}</div>
                 <div className="hero-card-title">{card.title}</div>
                 <div className="hero-card-desc">{card.desc}</div>

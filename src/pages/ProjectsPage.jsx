@@ -114,10 +114,10 @@ export default function ProjectsPage() {
 
         {/* Hero */}
         <section className="pp-hero">
-          <div className="pp-hero-bg-grid" />
+          
           <div className="pp-container pp-hero-inner">
-            <button className="pp-back-btn" onClick={() => navigate('/')}>
-              <ArrowLeft size={15} /> Back to Home
+            <button className="pp-back-btn" onClick={() => navigate(-1)}>
+              <ArrowLeft size={15} /> Back
             </button>
             <div className="pp-label">Case Studies</div>
             <h1 className="pp-hero-title">Our <em>Work</em></h1>
