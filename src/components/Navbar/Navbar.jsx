@@ -68,7 +68,7 @@ export default function Navbar({ isContactPage = false }) {
       <div className="navbar-main">
         <a className="navbar-logo" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
           <img src={logoImg} alt="FROPX Global" className="navbar-logo-img" />
-          <div className="navbar-logo-text">FROPX Global <span>Technologies</span></div>
+          <div className="navbar-logo-text">FROPX GlobalTech</div>
         </a>
 
         <ul className="navbar-links">

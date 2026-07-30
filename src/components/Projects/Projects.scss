@@ -3,7 +3,7 @@
 
 .projects-section {
   @include section-padding;
-  background: $white;
+  background: radial-gradient(circle at 50% 0%, rgba(239, 246, 255, 0.6) 0%, rgba(255, 255, 255, 1) 80%);
 }
 
 .projects-inner {
@@ -12,7 +12,7 @@
 
 .projects-header {
   @include flex-between;
-  margin-bottom: 52px;
+  margin-bottom: 48px;
   gap: 24px;
   flex-wrap: wrap;
   @include responsive(md) {
@@ -26,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: $gray-999;
+  color: $blue-700;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -35,18 +35,18 @@
     content: "";
     width: 28px;
     height: 2px;
-    background: $black;
+    background: $blue-600;
   }
 }
 
 .projects-title {
-  font-size: clamp(28px, 4vw, 50px);
-  font-weight: 600;
-  letter-spacing: -2px;
-  color: $black;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: $gray-999;
   em {
     font-style: normal;
-    color: $gray-999;
+    color: $blue-600;
   }
 }
 
@@ -55,30 +55,31 @@
   align-items: center;
   gap: 8px;
   padding: 10px 22px;
-  border: $border-medium;
+  border: 1px solid rgba(195, 207, 232, 0.6);
   border-radius: $radius-full;
   font-size: 13px;
   font-weight: 700;
-  color: $black;
+  color: $blue-700;
   text-decoration: none;
   cursor: pointer;
-  background: none;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
   transition: all $transition-base;
   flex-shrink: 0;
   &:hover {
-    background: $black;
+    background: $blue-600;
     color: $white;
-    border-color: $black;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    border-color: $blue-600;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
   }
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   @include responsive(lg) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   @include responsive(sm) {
     grid-template-columns: 1fr;
@@ -86,127 +87,110 @@
 }
 
 .projects-card {
-  background: $white;
-  border: $border-subtle;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(195, 207, 232, 0.6);
   border-radius: $radius-xl;
-  overflow: hidden;
+  padding: 32px 26px;
   cursor: pointer;
   transition: all $transition-base;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-  &:hover {
-    border-color: $gray-300;
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.projects-card-lg {
-  grid-column: span 7;
-  @include responsive(lg) {
-    grid-column: span 2;
-  }
-  @include responsive(sm) {
-    grid-column: span 1;
-  }
-}
-
-.projects-card-sm {
-  grid-column: span 5;
-  @include responsive(lg) {
-    grid-column: span 1;
-  }
-  @include responsive(sm) {
-    grid-column: span 1;
-  }
-}
-
-.projects-card-full {
-  grid-column: span 12;
-  @include responsive(lg) {
-    grid-column: span 2;
-  }
-  @include responsive(sm) {
-    grid-column: span 1;
-  }
-}
-
-.projects-card-image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: $blue-50;
-  overflow: hidden;
-  position: relative;
-}
-
-.projects-card-image-inner {
-  position: absolute;
-  inset: 0;
-  @include flex-center;
-  flex-direction: column;
-  gap: 10px;
-  color: $gray-999;
-  span {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-}
-
-.projects-card-body {
-  padding: 22px 24px;
-}
-
-.projects-card-tags {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.04);
+  min-height: 270px;
+  &:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(37, 99, 235, 0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.12);
+    .projects-card-title { color: $blue-700; }
+    .projects-card-link {
+      color: $blue-600;
+      svg { transform: translateX(4px); }
+    }
+  }
 }
 
-.projects-card-tag {
-  padding: 4px 10px;
-  background: $blue-50;
-  border: $border-subtle;
-  border-radius: $radius-full;
-  font-size: 10px;
+.projects-card-top {
+  @include flex-between;
+  margin-bottom: 20px;
+  font-size: 11px;
   font-weight: 700;
-  color: $blue-700;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.projects-card-industry {
+  color: $blue-700;
+  background: rgba(239, 246, 255, 0.8);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  padding: 3px 10px;
+  border-radius: $radius-full;
+}
+
+.projects-card-year {
+  color: $gray-400;
+  font-weight: 600;
 }
 
 .projects-card-title {
   font-size: 17px;
   font-weight: 700;
-  color: $black;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-.projects-card-desc {
-  font-size: 13px;
   color: $gray-999;
-  line-height: 1.7;
+  letter-spacing: -0.4px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  transition: color $transition-fast;
+}
+
+.projects-card-stat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  background: rgba(239, 246, 255, 0.6);
+  border-left: 3px solid $blue-600;
+  border-radius: $radius-md;
+}
+
+.projects-stat-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: $blue-700;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.projects-stat-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: $gray-500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 3px;
 }
 
 .projects-card-footer {
   @include flex-between;
-  padding: 14px 24px;
-  border-top: $border-subtle;
+  padding-top: 16px;
+  border-top: 1px solid rgba(195, 207, 232, 0.4);
   font-size: 12px;
-  color: $gray-999;
+}
+
+.projects-card-client {
+  font-weight: 600;
+  color: $gray-500;
 }
 
 .projects-card-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: $gray-600;
-  text-decoration: none;
+  gap: 6px;
   font-weight: 700;
+  color: $blue-700;
   font-size: 12px;
   transition: color $transition-fast;
-  &:hover {
-    color: $black;
-  }
+  svg { transition: transform $transition-fast; }
 }

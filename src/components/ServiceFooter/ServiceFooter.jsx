@@ -27,7 +27,7 @@ export default function ServiceFooter() {
           <div className="sf-brand">
             <div className="sf-logo" onClick={() => navigate('/')}>
               <div className="sf-logo-icon">NX</div>
-              <span>FROPX Global</span>
+              <span>FROPX GlobalTech</span>
             </div>
             <p className="sf-tagline">
               AI-first digital solutions that transform businesses globally.
@@ -68,7 +68,7 @@ export default function ServiceFooter() {
 
       <div className="sf-bottom">
         <div className="sf-container sf-bottom-inner">
-          <span>© {new Date().getFullYear()} FROPX Global Technologies. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} FROPX GlobalTech. All rights reserved.</span>
           <div className="sf-policy">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>

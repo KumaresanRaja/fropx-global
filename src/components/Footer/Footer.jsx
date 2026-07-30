@@ -27,13 +27,7 @@ const FOOTER_LINKS = {
     { label: 'Product Engineering', href: '/services/product-engineering' },
   ],
 
-  Resources: [
-    { label: 'Case Studies', href: '/projects' },
-    { label: 'Documentation', href: '#' },
-    { label: 'Whitepapers', href: '#' },
-    { label: 'API Reference', href: '#' },
-    { label: 'Status Page', href: '#' },
-  ],
+
 };
 
 const FOOTER_SOCIALS = [
@@ -134,7 +128,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-logo-text">
-              FROPX Global <span>Technologies</span>
+              FROPX GlobalTech
             </div>
 
           </a>
@@ -203,7 +197,7 @@ export default function Footer() {
         <div className="footer-bottom-container">
 
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} FROPX Global Technologies.
+            &copy; {new Date().getFullYear()} FROPX GlobalTech.
             All rights reserved.
           </div>
 

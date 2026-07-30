@@ -1,0 +1,333 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.csm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 22, 40, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  @include flex-center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.csm-modal {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: $radius-xl;
+  box-shadow: 0 24px 70px rgba(30, 58, 138, 0.18);
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(147, 197, 253, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.csm-header {
+  @include flex-between;
+  padding: 20px 28px 12px;
+  border-bottom: 1px solid rgba(195, 207, 232, 0.4);
+}
+
+.csm-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.csm-badge {
+  padding: 4px 12px;
+  background: rgba(239, 246, 255, 0.8);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  border-radius: $radius-full;
+  font-size: 11px;
+  font-weight: 700;
+  color: $blue-700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.csm-year, .csm-duration {
+  font-size: 12px;
+  color: $gray-500;
+  font-weight: 500;
+}
+
+.csm-close-btn {
+  background: rgba(239, 246, 255, 0.8);
+  border: 1px solid rgba(191, 219, 254, 0.6);
+  width: 34px;
+  height: 34px;
+  border-radius: $radius-full;
+  @include flex-center;
+  color: $blue-700;
+  cursor: pointer;
+  transition: all $transition-fast;
+  &:hover {
+    background: $blue-600;
+    color: $white;
+  }
+}
+
+.csm-hero {
+  padding: 16px 28px 20px;
+}
+
+.csm-highlight-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: $blue-700;
+  background: rgba(239, 246, 255, 0.8);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  padding: 4px 12px;
+  border-radius: $radius-md;
+  margin-bottom: 10px;
+}
+
+.csm-title {
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 700;
+  color: $gray-999;
+  letter-spacing: -0.6px;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.csm-client-line {
+  font-size: 13px;
+  color: $gray-500;
+  margin-bottom: 10px;
+  strong { color: $blue-700; }
+}
+
+.csm-short-desc {
+  font-size: 14px;
+  color: $gray-600;
+  line-height: 1.6;
+}
+
+.csm-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0 28px 20px;
+  @include responsive(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.csm-metric-card {
+  background: rgba(239, 246, 255, 0.6);
+  border: 1px solid rgba(191, 219, 254, 0.6);
+  border-radius: $radius-md;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.csm-metric-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: $blue-700;
+  letter-spacing: -0.5px;
+}
+
+.csm-metric-lbl {
+  font-size: 11px;
+  color: $gray-500;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.csm-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 0 28px;
+  border-bottom: 1px solid rgba(195, 207, 232, 0.4);
+  overflow-x: auto;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.csm-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all $transition-fast;
+  &:hover { color: $blue-600; }
+  &.active {
+    color: $blue-700;
+    border-bottom-color: $blue-700;
+    font-weight: 700;
+  }
+}
+
+.csm-body {
+  padding: 24px 28px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.csm-tab-content {
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $gray-999;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 14px;
+    color: $gray-600;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+}
+
+.csm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: $gray-700;
+    line-height: 1.5;
+  }
+}
+
+.csm-icon-check {
+  color: $blue-600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.csm-bullet-point {
+  color: $blue-600;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.csm-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.csm-tech-pill {
+  padding: 6px 14px;
+  background: rgba(239, 246, 255, 0.8);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: 600;
+  color: $blue-700;
+}
+
+.csm-testimonial {
+  background: rgba(239, 246, 255, 0.7);
+  border-left: 4px solid $blue-600;
+  padding: 16px 20px;
+  border-radius: $radius-sm;
+  margin-top: 20px;
+  position: relative;
+}
+
+.csm-quote-icon {
+  color: $blue-400;
+  margin-bottom: 6px;
+}
+
+.csm-quote-text {
+  font-size: 13px !important;
+  font-style: italic;
+  color: $gray-999 !important;
+  margin-bottom: 8px !important;
+}
+
+.csm-quote-author {
+  font-size: 12px;
+  color: $gray-600;
+  strong { color: $blue-700; }
+}
+
+.csm-footer {
+  @include flex-between;
+  gap: 12px;
+  padding: 18px 28px;
+  border-top: 1px solid rgba(195, 207, 232, 0.4);
+  background: rgba(245, 248, 255, 0.8);
+  @include responsive(sm) {
+    flex-direction: column;
+    button { width: 100%; justify-content: center; }
+  }
+}
+
+.csm-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: $radius-full;
+  border: 1px solid rgba(195, 207, 232, 0.8);
+  background: $white;
+  font-size: 13px;
+  font-weight: 600;
+  color: $gray-700;
+  cursor: pointer;
+  transition: all $transition-fast;
+  &:hover {
+    border-color: $blue-600;
+    color: $blue-700;
+  }
+}
+
+.csm-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: $radius-full;
+  background: $blue-600;
+  border: 1px solid $blue-600;
+  font-size: 13px;
+  font-weight: 700;
+  color: $white;
+  cursor: pointer;
+  transition: all $transition-fast;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  &:hover {
+    background: $blue-700;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+  }
+}

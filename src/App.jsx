@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import Contact from './components/Contact/Contact';
 import ContactPage from './pages/ContactPage';
 import ProjectsPage from './pages/ProjectsPage';
+import CaseStudyDetailPage from './pages/CaseStudyDetailPage';
 import AIAutomationPage from './pages/services/AIAutomationPage';
 import DataEngineeringPage from './pages/services/DataEngineeringPage';
 import CloudDevOpsPage from './pages/services/CloudDevOpsPage';
@@ -93,20 +94,22 @@ export default function App() {
   return (
     <LenisProvider>
       <BrowserRouter>
-      <RouteLoader>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact-us" element={<ContactPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/services/ai-automation" element={<AIAutomationPage />} />
-          <Route path="/services/data-engineering" element={<DataEngineeringPage />} />
-          <Route path="/services/cloud-devops" element={<CloudDevOpsPage />} />
-          <Route path="/services/custom-software" element={<CustomSoftwarePage />} />
-          <Route path="/services/product-engineering" element={<ProductEngineeringPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </RouteLoader>
-    </BrowserRouter>
+        <RouteLoader>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact-us" element={<ContactPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<CaseStudyDetailPage />} />
+            <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+            <Route path="/services/ai-automation" element={<AIAutomationPage />} />
+            <Route path="/services/data-engineering" element={<DataEngineeringPage />} />
+            <Route path="/services/cloud-devops" element={<CloudDevOpsPage />} />
+            <Route path="/services/custom-software" element={<CustomSoftwarePage />} />
+            <Route path="/services/product-engineering" element={<ProductEngineeringPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </RouteLoader>
+      </BrowserRouter>
     </LenisProvider>
   );
 }

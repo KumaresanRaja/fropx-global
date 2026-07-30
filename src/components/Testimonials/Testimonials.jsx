@@ -5,7 +5,7 @@ import './Testimonials.scss';
 const TESTIMONIALS = [
   {
     id: 1,
-    text: "FROPX Global transformed our data infrastructure completely. What used to take weeks of manual reporting now runs automatically in minutes. The ROI was evident within the first quarter.",
+    text: "FROPX GlobalTech transformed our data infrastructure completely. What used to take weeks of manual reporting now runs automatically in minutes. The ROI was evident within the first quarter.",
     name: 'Alexandra Chen',
     role: 'CTO, DataFlow Analytics',
     rating: 5,
@@ -21,7 +21,7 @@ const TESTIMONIALS = [
   },
   {
     id: 3,
-    text: "Working with FROPX Global feels like having a senior engineering team embedded in your company. They understand the business context, not just the technical requirements.",
+    text: "Working with FROPX GlobalTech feels like having a senior engineering team embedded in your company. They understand the business context, not just the technical requirements.",
     name: 'Priya Sharma',
     role: 'CEO, HealthSync Platforms',
     rating: 5,

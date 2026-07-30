@@ -1,183 +1,238 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import {
-  RiBrainLine, RiDatabase2Line, RiShoppingCartLine,
-  RiBarChartLine, RiRobotLine, RiCloudLine,
-  RiCodeSSlashLine, RiSmartphoneLine, RiShieldLine,
-  RiLineChartLine, RiSettings3Line, RiGlobalLine,
-} from 'react-icons/ri';
+import { ArrowLeft, Search, ArrowRight, Filter, X } from 'lucide-react';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import SEOHead from '../components/SEO/SEOHead';
+import CaseStudyModal from '../components/Modal/CaseStudyModal';
+import { CASE_STUDIES, CATEGORIES } from '../data/caseStudiesData';
 import './ProjectsPage.scss';
 
-const ALL_PROJECTS = [
-  {
-    id: 1, tags: ['AI Agents', 'Automation'],
-    title: 'Intelligent SVOD Content Recommendation Engine',
-    desc: 'Built an agentic AI system for a streaming platform that improved content discovery by 3x and reduced churn by 40% using collaborative filtering and LLM-powered personalization.',
-    icon: <RiBrainLine size={32} />, client: 'Media & Streaming', year: '2024',
-  },
-  {
-    id: 2, tags: ['Data Engineering', 'Analytics'],
-    title: 'Real-Time Logistics Analytics Platform',
-    desc: 'End-to-end data lakehouse for a logistics firm processing 5M+ daily events with sub-second dashboards and predictive delay alerts.',
-    icon: <RiDatabase2Line size={32} />, client: 'Logistics', year: '2024',
-  },
-  {
-    id: 3, tags: ['eCommerce', 'AI'],
-    title: 'AI-Powered eCommerce Assistant & Order Automation',
-    desc: 'Conversational AI assistant integrated with inventory, payments, and CRM systems — cutting manual order processing by 70%.',
-    icon: <RiShoppingCartLine size={32} />, client: 'Retail', year: '2023',
-  },
-  {
-    id: 4, tags: ['Healthcare', 'RCM'],
-    title: 'Healthcare Revenue Cycle Management Platform',
-    desc: 'Automated medical billing and claims workflow for a multi-state healthcare network, reducing denial rates from 18% to 4%.',
-    icon: <RiBarChartLine size={32} />, client: 'Healthcare', year: '2024',
-  },
-  {
-    id: 5, tags: ['Automation', 'RPA'],
-    title: 'Enterprise Back-Office Automation Suite',
-    desc: 'Deployed 12 intelligent bots for finance, HR, and procurement workflows saving 3,200+ manual hours per month across 5 departments.',
-    icon: <RiRobotLine size={32} />, client: 'Enterprise', year: '2023',
-  },
-  {
-    id: 6, tags: ['Cloud', 'DevOps'],
-    title: 'Multi-Cloud Infrastructure Modernization',
-    desc: 'Migrated a legacy monolith to microservices on AWS + GCP with zero-downtime deployment, achieving 99.99% uptime SLA.',
-    icon: <RiCloudLine size={32} />, client: 'FinTech', year: '2024',
-  },
-  {
-    id: 7, tags: ['Custom Software', 'API'],
-    title: 'Enterprise API Gateway & Developer Portal',
-    desc: 'Designed and built a unified API gateway handling 50M+ requests/day with rate limiting, auth, and a self-serve developer portal.',
-    icon: <RiCodeSSlashLine size={32} />, client: 'SaaS', year: '2023',
-  },
-  {
-    id: 8, tags: ['Mobile', 'React Native'],
-    title: 'Cross-Platform Field Service Mobile App',
-    desc: 'React Native app for 2,000+ field technicians with offline-first sync, GPS tracking, and real-time job dispatch integration.',
-    icon: <RiSmartphoneLine size={32} />, client: 'Utilities', year: '2024',
-  },
-  {
-    id: 9, tags: ['Security', 'Compliance'],
-    title: 'Zero-Trust Security Architecture Implementation',
-    desc: 'Implemented zero-trust network access across a 5,000-employee enterprise, achieving ISO 27001 certification within 6 months.',
-    icon: <RiShieldLine size={32} />, client: 'Insurance', year: '2023',
-  },
-  {
-    id: 10, tags: ['Analytics', 'BI'],
-    title: 'Executive BI Dashboard Suite',
-    desc: 'Built a real-time executive dashboard consolidating data from 12 source systems, reducing reporting time from 3 days to 15 minutes.',
-    icon: <RiLineChartLine size={32} />, client: 'Manufacturing', year: '2024',
-  },
-  {
-    id: 11, tags: ['Automation', 'AI'],
-    title: 'Intelligent Document Processing Pipeline',
-    desc: 'OCR + LLM pipeline that extracts, classifies, and routes 100K+ documents/month with 98.5% accuracy, replacing a 20-person manual team.',
-    icon: <RiSettings3Line size={32} />, client: 'Legal', year: '2024',
-  },
-  {
-    id: 12, tags: ['Cloud', 'Global'],
-    title: 'Global CDN & Edge Computing Platform',
-    desc: 'Architected a multi-region edge platform serving 200M+ users with <50ms latency globally, built on AWS CloudFront + Lambda@Edge.',
-    icon: <RiGlobalLine size={32} />, client: 'Media', year: '2023',
-  },
-];
-
 const PER_PAGE = 6;
-
-const ALL_TAGS = ['All', ...Array.from(new Set(ALL_PROJECTS.flatMap((p) => p.tags)))];
 
 export default function ProjectsPage() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const [activeTag, setActiveTag] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedModalStudy, setSelectedModalStudy] = useState(null);
 
-  const filtered = activeTag === 'All'
-    ? ALL_PROJECTS
-    : ALL_PROJECTS.filter((p) => p.tags.includes(activeTag));
+  // Filter case studies based on Category and Search Query
+  const filteredProjects = useMemo(() => {
+    return CASE_STUDIES.filter((cs) => {
+      const matchesCategory =
+        activeCategory === 'All' || cs.category === activeCategory;
 
-  const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !query ||
+        cs.title.toLowerCase().includes(query) ||
+        cs.shortDesc.toLowerCase().includes(query) ||
+        cs.client.toLowerCase().includes(query) ||
+        cs.tags.some((t) => t.toLowerCase().includes(query)) ||
+        cs.techStack.some((tech) => tech.toLowerCase().includes(query));
 
-  const handleTagChange = (tag) => {
-    setActiveTag(tag);
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
+
+  const totalPages = Math.ceil(filteredProjects.length / PER_PAGE);
+  const paginatedProjects = useMemo(() => {
+    return filteredProjects.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  }, [filteredProjects, page]);
+
+  const handleCategoryChange = (cat) => {
+    setActiveCategory(cat);
     setPage(1);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setPage(1);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery('');
+    setPage(1);
+  };
+
+  // Schema.org JSON-LD ItemList
+  const schemaItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': 'FROPX GlobalTech Case Studies',
+    'description': 'Real-world case studies in AI Engineering, Data Lakehouses, Automation, and Cloud Modernization.',
+    'itemListElement': CASE_STUDIES.map((cs, idx) => ({
+      '@type': 'ListItem',
+      'position': idx + 1,
+      'name': cs.title,
+      'url': `${window.location.origin}/projects/${cs.slug}`,
+    })),
   };
 
   return (
     <>
+      <SEOHead
+        title="Case Studies & Client Outcomes | FROPX GlobalTech"
+        description="Explore FROPX GlobalTech enterprise case studies. Verified business impact in AI engineering, data lakehouses, cloud modernization, and automation."
+        keywords="Case Studies, AI Case Studies, Data Lakehouse Portfolio, Cloud Migration Case Studies, Enterprise Automation"
+        canonicalUrl={window.location.href}
+        schemaData={schemaItemList}
+      />
+
       <Navbar />
+
       <main className="pp-main">
 
-        {/* Hero */}
+        {/* Hero Section */}
         <section className="pp-hero">
-          
           <div className="pp-container pp-hero-inner">
-            <button className="pp-back-btn" onClick={() => navigate(-1)}>
-              <ArrowLeft size={15} /> Back
+            <button className="pp-back-btn" onClick={() => navigate('/')}>
+              <ArrowLeft size={15} /> Home
             </button>
-            <div className="pp-label">Case Studies</div>
-            <h1 className="pp-hero-title">Our <em>Work</em></h1>
+            <div className="pp-label">Client Impact & Case Studies</div>
+            <h1 className="pp-hero-title">
+              Engineered Solutions. <em>Measurable Impact.</em>
+            </h1>
             <p className="pp-hero-subtitle">
-              Real projects. Measurable outcomes. Explore our full portfolio of delivered solutions.
+              Explore how FROPX partners with enterprise leaders to solve complex technical challenges and unlock tangible ROI through AI, data, and cloud architecture.
             </p>
+
+            {/* Executive Stats Row */}
+            <div className="pp-hero-stats">
+              <div className="pp-hstat">
+                <span className="pp-hstat-num">12+</span>
+                <span className="pp-hstat-lbl">Enterprise Deployments</span>
+              </div>
+              <div className="pp-hstat">
+                <span className="pp-hstat-num">98.5%</span>
+                <span className="pp-hstat-lbl">Deployment Success Rate</span>
+              </div>
+              <div className="pp-hstat">
+                <span className="pp-hstat-num">$18M+</span>
+                <span className="pp-hstat-lbl">Quantifiable Value Generated</span>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Filter + Grid */}
+        {/* Search, Filter & Portfolio Grid Section */}
         <section className="pp-content">
           <div className="pp-container">
 
-            {/* Filter Tags */}
-            <div className="pp-filters">
-              {ALL_TAGS.map((tag) => (
-                <button
-                  key={tag}
-                  className={`pp-filter-btn${activeTag === tag ? ' active' : ''}`}
-                  onClick={() => handleTagChange(tag)}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
+            {/* Controls Bar: Search + Filter Tabs */}
+            <div className="pp-controls-bar">
+              {/* Search Bar */}
+              <div className="pp-search-box">
+                <Search size={17} className="pp-search-icon" />
+                <input
+                  type="text"
+                  placeholder="Filter case studies by industry, technology, or client..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  aria-label="Search case studies"
+                />
+                {searchQuery && (
+                  <button className="pp-clear-btn" onClick={clearSearch} aria-label="Clear search">
+                    <X size={14} />
+                  </button>
+                )}
+              </div>
 
-            {/* Grid */}
-            <div className="pp-grid">
-              {paginated.map((p) => (
-                <div className="pp-card" key={p.id}>
-                  <div className="pp-card-image">
-                    <div className="pp-card-image-inner">
-                      {p.icon}
-                      <span>{p.client}</span>
-                    </div>
-                  </div>
-                  <div className="pp-card-body">
-                    <div className="pp-card-tags">
-                      {p.tags.map((t) => (
-                        <span className="pp-card-tag" key={t}>{t}</span>
-                      ))}
-                    </div>
-                    <div className="pp-card-title">{p.title}</div>
-                    <div className="pp-card-desc">{p.desc}</div>
-                  </div>
-                  <div className="pp-card-footer">
-                    <span>{p.year}</span>
-                    <a
-                      href="/contact-us"
-                      className="pp-card-link"
-                      onClick={(e) => { e.preventDefault(); navigate('/contact-us'); }}
-                    >
-                      View Case Study <ExternalLink size={12} />
-                    </a>
-                  </div>
+              {/* Category Filter Pills */}
+              <div className="pp-filters-wrapper">
+                <div className="pp-filters">
+                  {CATEGORIES.map((cat) => {
+                    const count =
+                      cat === 'All'
+                        ? CASE_STUDIES.length
+                        : CASE_STUDIES.filter((p) => p.category === cat).length;
+
+                    return (
+                      <button
+                        key={cat}
+                        className={`pp-filter-btn${activeCategory === cat ? ' active' : ''}`}
+                        onClick={() => handleCategoryChange(cat)}
+                      >
+                        {cat} <span className="pp-count">{count}</span>
+                      </button>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
             </div>
 
-            {/* Pagination */}
+            {/* Results Info Bar */}
+            <div className="pp-results-info">
+              <span>
+                Showing <strong>{filteredProjects.length}</strong> {filteredProjects.length === 1 ? 'case study' : 'case studies'}
+                {activeCategory !== 'All' && ` in ${activeCategory}`}
+                {searchQuery && ` matching "${searchQuery}"`}
+              </span>
+              {(activeCategory !== 'All' || searchQuery) && (
+                <button
+                  className="pp-reset-btn"
+                  onClick={() => {
+                    setActiveCategory('All');
+                    setSearchQuery('');
+                  }}
+                >
+                  <Filter size={12} /> Reset Filters
+                </button>
+              )}
+            </div>
+
+            {/* Sleek Minimalist Portfolio Grid */}
+            {filteredProjects.length > 0 ? (
+              <div className="pp-grid">
+                {paginatedProjects.map((p) => (
+                  <article
+                    className="pp-card"
+                    key={p.id}
+                    onClick={() => navigate(`/projects/${p.slug}`)}
+                  >
+                    {/* Meta Row */}
+                    <div className="pp-card-top">
+                      <span className="pp-card-industry">{p.industry}</span>
+                      <span className="pp-card-year">{p.year}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="pp-card-title">{p.title}</h3>
+
+                    {/* Hero Metric Highlight */}
+                    <div className="pp-card-stat">
+                      <span className="pp-stat-val">{p.heroMetric.value}</span>
+                      <span className="pp-stat-lbl">{p.heroMetric.label}</span>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="pp-card-footer">
+                      <span className="pp-card-client">{p.client}</span>
+                      <span className="pp-card-link">
+                        Read Story <ArrowRight size={13} />
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="pp-empty-state">
+                <h3>No Matching Case Studies</h3>
+                <p>Try refining your search terms or clearing current filter categories.</p>
+                <button
+                  className="pp-reset-btn-large"
+                  onClick={() => {
+                    setActiveCategory('All');
+                    setSearchQuery('');
+                  }}
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
+
+            {/* Pagination Controls */}
             {totalPages > 1 && (
               <div className="pp-pagination">
                 <button
@@ -212,6 +267,14 @@ export default function ProjectsPage() {
         </section>
 
       </main>
+
+      {/* Quick View Modal */}
+      <CaseStudyModal
+        caseStudy={selectedModalStudy}
+        isOpen={Boolean(selectedModalStudy)}
+        onClose={() => setSelectedModalStudy(null)}
+      />
+
       <Footer />
     </>
   );

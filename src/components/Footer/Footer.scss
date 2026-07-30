@@ -29,8 +29,7 @@
 }
 
 /* Brand */
-.footer-brand {
-}
+.footer-brand {}
 
 .footer-logo {
   display: flex;
@@ -126,6 +125,7 @@
       text-decoration: none;
       color: $gray-600;
       transition: color $transition-fast;
+
       &:hover {
         color: $white;
       }

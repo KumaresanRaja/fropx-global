@@ -54,16 +54,13 @@ export default function About() {
           </h2>
 
           <p className="about-text">
-            At FROPX Global Technologies, we believe a company is more than just an
-            organization — it's a living body. While the company forms the body,
-            our employees and customers are the soul that drives every decision
-            we make.
+            At FROPX GlobalTech, we believe our greatest strength lies in our people and the relationships we build. Our employees are the driving force behind every innovation, bringing creativity, expertise, and dedication to solving complex business challenges. 
+            We foster a culture of collaboration, continuous learning, and excellence, empowering our teams to grow professionally while creating meaningful technology that makes a real impact.
           </p>
 
           <p className="about-text">
-            Founded with a vision to democratize enterprise-grade technology,
-            we specialize in building AI-first, scalable, and secure digital
-            solutions that solve real business problems and deliver measurable ROI.
+            Our clients are more than customers—they are trusted partners in our journey. 
+            By understanding their unique goals and challenges, we develop AI-powered, scalable, and secure digital solutions that deliver measurable business value. Built on trust, transparency, and long-term collaboration, every partnership reflects our commitment to helping businesses innovate faster, operate smarter, and achieve sustainable growth together.
           </p>
 
           <div className="about-values">
