@@ -1,5 +1,6 @@
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
   RiTwitterXFill,
@@ -39,21 +40,9 @@ const FOOTER_SOCIALS = [
 
   {
     icon: <RiLinkedinFill size={16} />,
-    href: '#',
+    href: 'https://www.linkedin.com/company/fropx-globaltech',
     label: 'LinkedIn',
-  },
-
-  {
-    icon: <RiGithubFill size={16} />,
-    href: '#',
-    label: 'GitHub',
-  },
-
-  {
-    icon: <RiYoutubeFill size={16} />,
-    href: '#',
-    label: 'YouTube',
-  },
+  }
 ];
 
 export default function Footer() {
@@ -203,17 +192,11 @@ export default function Footer() {
 
           <div className="footer-policy-links">
 
-            <a href="#">
-              Privacy Policy
-            </a>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-of-service">Terms of Service</Link>
+            <Link to="/cookie-policy">Cookie Policy</Link>
 
-            <a href="#">
-              Terms of Service
-            </a>
-
-            <a href="#">
-              Cookie Policy
-            </a>
+           
 
           </div>
 

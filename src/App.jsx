@@ -23,6 +23,9 @@ import ProductEngineeringPage from './pages/services/ProductEngineeringPage';
 import PageLoader from './components/PageLoader/PageLoader';
 import ConsultationModal from './components/Modal/ConsultationModal';
 import NotFound from './pages/NotFound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
 
 function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -106,6 +109,9 @@ export default function App() {
             <Route path="/services/cloud-devops" element={<CloudDevOpsPage />} />
             <Route path="/services/custom-software" element={<CustomSoftwarePage />} />
             <Route path="/services/product-engineering" element={<ProductEngineeringPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </RouteLoader>
