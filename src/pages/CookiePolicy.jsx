@@ -81,7 +81,7 @@ export default function CookiePolicy() {
               <strong>FROPX GlobalTech</strong>
             </p>
 
-            <p>📧 fropx.connect@gmail.com</p>
+            <p>📧 contact@fropxglobal.com</p>
 
             <p>
               For more information about how we handle your data, please review

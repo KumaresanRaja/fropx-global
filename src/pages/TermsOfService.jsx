@@ -95,7 +95,7 @@ export default function TermsOfService() {
               <strong>FROPX GlobalTech</strong>
             </p>
 
-            <p>📧 fropx.connect@gmail.com</p>
+            <p>📧 contact@fropxglobal.com</p>
 
             <p>We are happy to assist you with any questions or concerns.</p>
           </div>

@@ -52,8 +52,8 @@ export default function ServiceFooter() {
 
           <div className="sf-contact">
             <div className="sf-col-title">Contact</div>
-            <a href="mailto:fropx.connect@gmail.com" className="sf-contact-item">
-              <Mail size={14} /> fropx.connect@gmail.com
+            <a href="mailto:contact@fropxglobal.com" className="sf-contact-item">
+              <Mail size={14} /> contact@fropxglobal.com
             </a>
             <a href="tel:+15551234567" className="sf-contact-item">
               <Phone size={14} /> +91 8248981175

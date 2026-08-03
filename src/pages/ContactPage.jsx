@@ -137,7 +137,7 @@ export default function ContactPage() {
               </p>
               <div className="cp-details">
                 {[
-                  { icon: <Mail size={18} />, label: 'Email', value: 'fropx.connect@gmail.com' },
+                  { icon: <Mail size={18} />, label: 'Email', value: 'contact@fropxglobal.com' },
                   { icon: <Phone size={18} />, label: 'Phone', value: '+91 8248981175' },
                   { icon: <MapPin size={18} />, label: 'Offices', value: 'Dharmapuri · Tamil Nadu · India' },
                 ].map((d) => (
@@ -235,7 +235,7 @@ export default function ContactPage() {
               <h2 className="cp-section-title">Common <em>Questions</em></h2>
               <p className="cp-faq-sub">
                 Can&apos;t find your answer?{' '}
-                <a href="mailto:fropx.connect@gmail.com">Email us directly.</a>
+                <a href="mailto:contact@fropxglobal.com">Email us directly.</a>
               </p>
             </div>
             <div className="cp-faq-list">

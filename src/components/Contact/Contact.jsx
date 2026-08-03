@@ -88,7 +88,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail-value">
-                  fropx.connect@gmail.com
+                  contact@fropxglobal.com
                 </div>
               </div>
             </div>

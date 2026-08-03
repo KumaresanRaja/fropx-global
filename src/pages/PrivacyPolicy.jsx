@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
               <strong>FROPX GlobalTech</strong>
             </p>
 
-            <p>Email: fropx.connect@gmail.com</p>
+            <p>Email: contact@fropxglobal.com</p>
 
             <p>
               We are committed to protecting your privacy and responding to your
